@@ -1,0 +1,22 @@
+import { createBrowserRouter } from "react-router";
+import Home from "../pages/home/Home";
+import Root from "../root/Root";
+import AllLoan from "../pages/AllLoan";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root></Root>,
+    children: [
+      {
+        index: true,
+        Component: Home,
+      },
+      {
+        path: "allLoan",
+        Component: AllLoan,
+      },
+    ],
+  },
+]);
+export default router;

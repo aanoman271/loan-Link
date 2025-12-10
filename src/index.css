@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@plugin "daisyui";
+.navlink li :hover {
+  color: #374151;
+  border-bottom: 1px solid #374151;
+}
