@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../Logo";
 import { NavLink } from "react-router";
+import img from "../../assets/react.svg";
 const Navbar = () => {
   const Links = (
     <>
@@ -44,8 +45,14 @@ const Navbar = () => {
       <div className="">
         <ul className="flex  gap-6 navlink">{Links}</ul>
       </div>
-      <div>
-        <label className="flex cursor-pointer gap-2">
+      <div></div>
+      <div className="flex items-center gap-3">
+        <img
+          src={img}
+          className="cursor-pointer hover:border-5 transition-[1s] border-gray-300  w-10 h-10 rounded-full"
+          alt=""
+        />
+        <label className=" flex cursor-pointer gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
