@@ -30,7 +30,7 @@ const Register = () => {
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
-    console.log(apiResponse.data.data.url);
+    const userData = { name, email, password, role };
   };
 
   return (
