@@ -11,12 +11,14 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const role = form.role.value;
     const photo = form.photo.files[0];
 
     console.log("Name:", name);
     console.log("Email:", email);
     console.log("Password:", password);
-    console.log("Password:", photo);
+    console.log("role:", role);
+    console.log("photo:", photo);
     const formData = new FormData();
     console.log("formfdata", formData);
     formData.append("image", photo);
@@ -71,12 +73,13 @@ const Register = () => {
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Browsers</legend>
               <select
+                name="role"
                 defaultValue="Pick a browser"
                 className="select w-full px-4 py-2 border rounded-lg"
               >
                 <option disabled={true}>Role</option>
-                <option>Chrome</option>
-                <option>FireFox</option>
+                <option value="borrower">Borrower</option>
+                <option value="manager">Manager</option>
               </select>
               <span className="label">Optional</span>
             </fieldset>
