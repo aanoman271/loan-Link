@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../Logo";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import img from "../../assets/react.svg";
 const Navbar = () => {
   const Links = (
@@ -9,7 +9,9 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "underline text-gray-600" : "text-gray-800 font-medium"
+            isActive
+              ? "underline text-gray-600 font-medium"
+              : "text-gray-800 font-medium"
           }
         >
           Home
@@ -19,19 +21,35 @@ const Navbar = () => {
         <NavLink
           to="/allLoan"
           className={({ isActive }) =>
-            isActive ? "underline text-gray-600" : "text-gray-800 font-medium"
+            isActive
+              ? "underline text-gray-600 font-medium"
+              : "text-gray-800 font-medium"
           }
         >
           All-loan{" "}
         </NavLink>
       </li>
       <li>
-        <NavLink to="/" className="text-gray-800  font-medium">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "underline text-gray-600 font-medium"
+              : "text-gray-800 font-medium"
+          }
+        >
           About Us
         </NavLink>
       </li>
       <li>
-        <NavLink to="/" className="text-gray-800  font-medium">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "underline text-gray-600 font-medium"
+              : "text-gray-800 font-medium"
+          }
+        >
           Contract
         </NavLink>
       </li>
@@ -45,8 +63,23 @@ const Navbar = () => {
       <div className="">
         <ul className="flex  gap-6 navlink">{Links}</ul>
       </div>
-      <div></div>
+
       <div className="flex items-center gap-3">
+        <div className=" flex items-center gap-3">
+          <div>
+            {/* <FaArrowRightToBracket /> */}
+            <Link className="text-gray-800  font-medium" to="login">
+              Log In
+            </Link>
+          </div>
+          <Link
+            className="btn py-0  bg-blue-600 text-white  font-medium"
+            to="Register"
+          >
+            Register
+          </Link>
+        </div>
+
         <img
           src={img}
           className="cursor-pointer hover:border-5 transition-[1s] border-gray-300  w-10 h-10 rounded-full"

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (e) => {
+  const handleLogInSubmit = (e) => {
     e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
     console.log("Email:", email);
     console.log("Password:", password);
     // call login API here
@@ -16,7 +16,7 @@ const Login = () => {
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm">
         <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleLogInSubmit} className="space-y-4">
           {/* Email */}
           <div>
             <label className="block text-gray-700 font-medium mb-1">
@@ -24,9 +24,8 @@ const Login = () => {
             </label>
             <input
               type="email"
+              name="email"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
               placeholder="Enter your email"
             />
@@ -39,9 +38,8 @@ const Login = () => {
             </label>
             <input
               type="password"
+              name="password"
               required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
               placeholder="Enter your password"
             />
@@ -55,6 +53,42 @@ const Login = () => {
             Login
           </button>
         </form>
+        <button className="btn w-full mt-6 bg-white text-black border-[#e5e5e5]">
+          <svg
+            aria-label="Google logo"
+            width="16"
+            height="16"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <g>
+              <path d="m0 0H512V512H0" fill="#fff"></path>
+              <path
+                fill="#34a853"
+                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+              ></path>
+              <path
+                fill="#4285f4"
+                d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+              ></path>
+              <path
+                fill="#fbbc02"
+                d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
+              ></path>
+              <path
+                fill="#ea4335"
+                d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+              ></path>
+            </g>
+          </svg>
+          Login with Google
+        </button>
+        <p className=" mt-1.5">
+          New to our webside ?
+          <Link className=" underline text-blue-500" to="/register">
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );
