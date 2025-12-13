@@ -7,8 +7,9 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
-import { auth } from "../fireBaseConfiq/fireBaseConfiq";
+import { auth } from "../firebaseConfiq/fireBaseConfiq";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -18,22 +19,19 @@ const AuthProvider = ({ children }) => {
 
   // signIn with Google
   const googleSignIn = () => {
-    setAuthLoadding(true);
     return signInWithPopup(auth, provider);
   };
   // create user with email
   const createUser = async (email, password) => {
-    setAuthLoadding(true);
-
     return await createUserWithEmailAndPassword(auth, email, password);
   };
   const signInUser = (email, password) => {
-    setAuthLoadding(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
-
+  const updateuser = async (userInfo) => {
+    return await updateProfile(auth.currentUser, userInfo);
+  };
   const logOut = () => {
-    setAuthLoadding(true);
     return signOut(auth);
   };
 
@@ -59,6 +57,7 @@ const AuthProvider = ({ children }) => {
     setFetchLoadding,
     setUser,
     signInUser,
+    updateuser,
     createUser,
     googleSignIn,
     logOut,

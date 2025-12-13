@@ -1,11 +1,34 @@
 import axios from "axios";
-import React from "react";
-import { Link } from "react-router";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router";
+import useInstance from "../Hooks/useInstance";
+import useAuth from "../Hooks/useAuth";
+import useSwal from "../Hooks/useSwal";
+import Loadding from "../components/Loadding";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const { createUser, updateuser, setUser } = useAuth();
+  const { success } = useSwal();
+  const instance = useInstance();
+  const [Rloadding, setRloadding] = useState(false);
+  const [registerErr, setRegisterErr] = useState("");
+
+  const photoUpload = async (photo) => {
+    const formData = new FormData();
+    formData.append("image", photo);
+
+    const imageRes = await axios.post(
+      "https://api.imgbb.com/1/upload?key=2eeacd821823a9da5e1e0aaef34f237d",
+      formData,
+      { headers: { "Content-Type": "multipart/form-data" } }
+    );
+    return imageRes.data.data.url;
+  };
   const handleRegister = async (e) => {
     e.preventDefault();
-
+    setRegisterErr("");
+    setRloadding(true);
     const form = e.target;
 
     const name = form.name.value;
@@ -14,25 +37,58 @@ const Register = () => {
     const role = form.role.value;
     const photo = form.photo.files[0];
 
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("role:", role);
-    console.log("photo:", photo);
-    const formData = new FormData();
-    console.log("formfdata", formData);
-    formData.append("image", photo);
-    // API call here
-    const apiResponse = await axios.post(
-      `https://api.imgbb.com/1/upload?key=2eeacd821823a9da5e1e0aaef34f237d`,
-      formData,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
+    if (password.length < 6) {
+      setRloadding(false);
+      return setRegisterErr("Password must be at least 6 characters long");
+    }
+    if (!/[A-Z]/.test(password)) {
+      setRloadding(false);
+
+      return setRegisterErr("Password must have at least one uppercase letter");
+    }
+    if (!/[a-z]/.test(password)) {
+      setRloadding(false);
+
+      return setRegisterErr("Password must have at least one lowercase letter");
+    }
+
+    try {
+      // 1️⃣ Upload image to ImgBB
+
+      const userphoto = await photoUpload(photo);
+      if (!userphoto) {
+        setRloadding(false);
+        return setRegisterErr("select a photo");
       }
-    );
-    const userData = { name, email, password, role };
+
+      // 2️⃣ Create Firebase user
+      await createUser(email, password)
+        .then(async (res) => {
+          // 3️⃣ Update Firebase Profile (VERY IMPORTANT)
+          await updateuser({
+            displayName: name,
+            photoURL: userphoto,
+          });
+          setUser(res.user);
+          success("Well Come");
+          navigate("/");
+        })
+        .catch((err) => {
+          setRegisterErr(err.message);
+        });
+
+      const userData = { name, email, role, photoURL: userphoto };
+      await instance.post("/users", userData);
+
+      console.log("User Registered Successfully");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setRloadding(false);
+    }
   };
 
+  if (Rloadding) return <Loadding></Loadding>;
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm">
@@ -103,6 +159,7 @@ const Register = () => {
             Register
           </button>
         </form>
+        <p className="text-sm text-red-500">{registerErr}</p>
         <p className=" mt-1.5">
           Alrady have an account ?
           <Link className="underline text-blue-500" to="/login">

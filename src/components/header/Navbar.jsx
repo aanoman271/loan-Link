@@ -1,8 +1,10 @@
 import React from "react";
 import Logo from "../Logo";
 import { Link, NavLink } from "react-router";
-import img from "../../assets/react.svg";
+import useAuth from "../../Hooks/useAuth";
+import Loadding from "../Loadding";
 const Navbar = () => {
+  const { user, authLoadding } = useAuth();
   const Links = (
     <>
       <li>
@@ -80,11 +82,21 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <img
-          src={img}
-          className="cursor-pointer hover:border-5 transition-[1s] border-gray-300  w-10 h-10 rounded-full"
-          alt=""
-        />
+        {/* className="cursor-pointer hover:border-5 transition-[1s] border-gray-300  w-10 h-10 rounded-full" */}
+        <div className="overflow-hidden cursor-pointer hover:border-5 transition-[1s] flex justify-center items-center  border-gray-300  w-10 h-10 rounded-full">
+          {authLoadding ? (
+            <>
+              <span className="loading loading-ring loading-sm"></span>
+            </>
+          ) : (
+            <img
+              className="h-full w-full"
+              src={user?.photoURL || "../../assets/Tech Life - Add User.png"}
+              alt=""
+            />
+          )}
+        </div>
+
         <label className=" flex cursor-pointer gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
