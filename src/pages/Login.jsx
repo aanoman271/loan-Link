@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import useSwal from "../Hooks/useSwal";
+import useInstance from "../Hooks/useInstance";
 
 const Login = () => {
-  const { signInUser } = useAuth();
+  const instance = useInstance();
+  const { signInUser, googleSignIn } = useAuth();
   const { success } = useSwal();
   const [logInErr, setLogInErr] = useState("");
   const navigate = useNavigate();
@@ -25,6 +27,19 @@ const Login = () => {
       .catch((error) => {
         setLogInErr(error.message);
       });
+  };
+
+  const HadleGoogleSignIn = async () => {
+    const crecredential = await googleSignIn();
+    const currentUser = crecredential.user;
+    const userData = {
+      name: currentUser.displayName,
+      email: currentUser.email,
+      role: "Borrower",
+
+      photoURL: currentUser.photoURL,
+    };
+    await instance.post("/users", userData);
   };
 
   return (
@@ -69,7 +84,10 @@ const Login = () => {
             Login
           </button>
         </form>
-        <button className="btn w-full mt-6 bg-white text-black border-[#e5e5e5]">
+        <button
+          onClick={HadleGoogleSignIn}
+          className="btn w-full mt-6 bg-white text-black border-[#e5e5e5]"
+        >
           <svg
             aria-label="Google logo"
             width="16"

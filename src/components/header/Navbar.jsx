@@ -92,24 +92,7 @@ const Navbar = () => {
             <span className="loading loading-ring loading-sm"></span>
           ) : (
             <img
-              src={
-                user?.photoURL || (
-                  <div
-                    className="overflow-hidden cursor-pointer flex justify-center items-center
-  border border-gray-300 w-10 h-10 rounded-full"
-                  >
-                    {authLoadding ? (
-                      <span className="loading loading-ring loading-sm"></span>
-                    ) : (
-                      <img
-                        src={user?.photoURL || avatar}
-                        alt="user"
-                        className="h-full w-full object-cover rounded-full"
-                      />
-                    )}
-                  </div>
-                )
-              }
+              src={user?.photoURL || avatar}
               alt="user"
               className="h-full w-full object-cover rounded-full"
             />
