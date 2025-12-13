@@ -3,6 +3,7 @@ import Logo from "../Logo";
 import { Link, NavLink } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import Loadding from "../Loadding";
+import avatar from "../../assets/Tech Life - Add User.png";
 const Navbar = () => {
   const { user, authLoadding } = useAuth();
   const Links = (
@@ -83,16 +84,34 @@ const Navbar = () => {
         </div>
 
         {/* className="cursor-pointer hover:border-5 transition-[1s] border-gray-300  w-10 h-10 rounded-full" */}
-        <div className="overflow-hidden cursor-pointer hover:border-5 transition-[1s] flex justify-center items-center  border-gray-300  w-10 h-10 rounded-full">
+        <div
+          className="overflow-hidden cursor-pointer hover:border-gray-400 transition-[1s]  flex justify-center items-center
+  border border-gray-300 w-10 h-10 rounded-full"
+        >
           {authLoadding ? (
-            <>
-              <span className="loading loading-ring loading-sm"></span>
-            </>
+            <span className="loading loading-ring loading-sm"></span>
           ) : (
             <img
-              className="h-full w-full"
-              src={user?.photoURL || "../../assets/Tech Life - Add User.png"}
-              alt=""
+              src={
+                user?.photoURL || (
+                  <div
+                    className="overflow-hidden cursor-pointer flex justify-center items-center
+  border border-gray-300 w-10 h-10 rounded-full"
+                  >
+                    {authLoadding ? (
+                      <span className="loading loading-ring loading-sm"></span>
+                    ) : (
+                      <img
+                        src={user?.photoURL || avatar}
+                        alt="user"
+                        className="h-full w-full object-cover rounded-full"
+                      />
+                    )}
+                  </div>
+                )
+              }
+              alt="user"
+              className="h-full w-full object-cover rounded-full"
             />
           )}
         </div>

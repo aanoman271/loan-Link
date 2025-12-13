@@ -8,7 +8,7 @@ import Loadding from "../components/Loadding";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { createUser, updateuser, setUser } = useAuth();
+  const { createUser, updateuser } = useAuth();
   const { success } = useSwal();
   const instance = useInstance();
   const [Rloadding, setRloadding] = useState(false);
@@ -63,19 +63,19 @@ const Register = () => {
 
       // 2️⃣ Create Firebase user
       await createUser(email, password)
-        .then(async (res) => {
+        .then(() => {
           // 3️⃣ Update Firebase Profile (VERY IMPORTANT)
-          await updateuser({
-            displayName: name,
-            photoURL: userphoto,
-          });
-          setUser(res.user);
+
           success("Well Come");
           navigate("/");
         })
         .catch((err) => {
           setRegisterErr(err.message);
         });
+      await updateuser({
+        displayName: name,
+        photoURL: userphoto,
+      });
 
       const userData = { name, email, role, photoURL: userphoto };
       await instance.post("/users", userData);

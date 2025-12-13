@@ -1,14 +1,30 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router";
+import useAuth from "../Hooks/useAuth";
+import useSwal from "../Hooks/useSwal";
 
 const Login = () => {
+  const { signInUser } = useAuth();
+  const { success } = useSwal();
+  const [logInErr, setLogInErr] = useState("");
+  const navigate = useNavigate();
+
   const handleLogInSubmit = (e) => {
+    setLogInErr("");
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log("Email:", email);
     console.log("Password:", password);
-    // call login API here
+    signInUser(email, password)
+      .then((res) => {
+        console.log(res);
+        success("well Come");
+        navigate("/");
+      })
+      .catch((error) => {
+        setLogInErr(error.message);
+      });
   };
 
   return (
@@ -83,6 +99,7 @@ const Login = () => {
           </svg>
           Login with Google
         </button>
+        <p className="text-red-500 text-sm">{logInErr}</p>
         <p className=" mt-1.5">
           New to our webside ?
           <Link className=" underline text-blue-500" to="/register">
