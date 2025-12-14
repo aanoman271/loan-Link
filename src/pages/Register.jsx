@@ -1,10 +1,10 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import useInstance from "../Hooks/useInstance";
 import useAuth from "../Hooks/useAuth";
 import useSwal from "../Hooks/useSwal";
 import Loadding from "../components/Loadding";
+import useImgbb from "../reuseabble/useImgbb";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -13,18 +13,8 @@ const Register = () => {
   const instance = useInstance();
   const [Rloadding, setRloadding] = useState(false);
   const [registerErr, setRegisterErr] = useState("");
+  const imgbbUpload = useImgbb();
 
-  const photoUpload = async (photo) => {
-    const formData = new FormData();
-    formData.append("image", photo);
-
-    const imageRes = await axios.post(
-      "https://api.imgbb.com/1/upload?key=2eeacd821823a9da5e1e0aaef34f237d",
-      formData,
-      { headers: { "Content-Type": "multipart/form-data" } }
-    );
-    return imageRes.data.data.url;
-  };
   const handleRegister = async (e) => {
     e.preventDefault();
     setRegisterErr("");
@@ -53,22 +43,14 @@ const Register = () => {
     }
 
     try {
-      // 1️⃣ Upload image to ImgBB
-
-      const userphoto = await photoUpload(photo);
-      if (!userphoto) {
+      if (!photo) {
         setRloadding(false);
         return setRegisterErr("select a photo");
       }
+      const userphoto = await imgbbUpload(photo);
 
-      // 2️⃣ Create Firebase user
       await createUser(email, password)
-        .then(() => {
-          // 3️⃣ Update Firebase Profile (VERY IMPORTANT)
-
-          success("Well Come");
-          navigate("/");
-        })
+        .then(() => {})
         .catch((err) => {
           setRegisterErr(err.message);
         });
@@ -79,7 +61,8 @@ const Register = () => {
 
       const userData = { name, email, role, photoURL: userphoto };
       await instance.post("/users", userData);
-
+      success("Well Come");
+      navigate("/");
       console.log("User Registered Successfully");
     } catch (error) {
       console.error(error);

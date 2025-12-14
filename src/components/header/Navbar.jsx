@@ -2,7 +2,6 @@ import React from "react";
 import Logo from "../Logo";
 import { Link, NavLink } from "react-router";
 import useAuth from "../../Hooks/useAuth";
-import Loadding from "../Loadding";
 import avatar from "../../assets/Tech Life - Add User.png";
 const Navbar = () => {
   const { user, authLoadding } = useAuth();
@@ -80,6 +79,12 @@ const Navbar = () => {
             to="Register"
           >
             Register
+          </Link>
+          <Link
+            className="btn py-0  bg-blue-600 text-white  font-medium"
+            to="/dashboard"
+          >
+            Dashboard
           </Link>
         </div>
 

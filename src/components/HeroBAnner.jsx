@@ -4,7 +4,6 @@ import { Link } from "react-router";
 const HeroBAnner = () => {
   return (
     <section className="flex flex-col-reverse md:flex-row min-h-[80vh]">
-      {/* TEXT SECTION */}
       <div className="bg-[#172358] flex flex-col justify-center gap-6 px-6 md:px-12 py-10 md:w-1/2 w-full">
         <h1 className="text-3xl md:text-5xl font-bold leading-tight text-gray-200">
           <span className="text-white text-4xl md:text-6xl">Smart</span>{" "}
@@ -26,7 +25,6 @@ const HeroBAnner = () => {
         </Link>
       </div>
 
-      {/* IMAGE SECTION */}
       <div className="md:w-1/2 w-full h-64 md:h-auto overflow-hidden">
         <img
           src={heroImg}
