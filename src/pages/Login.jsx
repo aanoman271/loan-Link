@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import useSwal from "../Hooks/useSwal";
-import useInstance from "../Hooks/useInstance";
+import useAxiosSecure from "../Hooks/useSecureInstance";
 
 const Login = () => {
-  const instance = useInstance();
+  const instance = useAxiosSecure();
   const { signInUser, googleSignIn } = useAuth();
   const { success } = useSwal();
   const [logInErr, setLogInErr] = useState("");

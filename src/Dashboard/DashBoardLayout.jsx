@@ -21,7 +21,7 @@ const DashBoardLayout = () => {
       </li>
       <li>
         <NavLink
-          to="/dashboard/managerManageloan"
+          to="/dashboard/manage-loans"
           className={({ isActive }) =>
             isActive
               ? "bg-blue-700 text-gray-300 btn  py-2 rounded w-full"

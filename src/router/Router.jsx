@@ -7,10 +7,10 @@ import Home from "../pages/Home";
 import DashBoardLayout from "../Dashboard/DashBoardLayout";
 
 import AddLoanManager from "../Dashboard/dashboardPages/manager/AddLoanManager";
-import ManageLolanManager from "../Dashboard/dashboardPages/manager/ManageLolanManager";
 import PendingAppManager from "../Dashboard/dashboardPages/manager/PendingAppManager";
 import ApprovedAppManager from "../Dashboard/dashboardPages/manager/ApprovedAppManager";
 import ProfileManager from "../Dashboard/dashboardPages/manager/ProfileManager";
+import ManageLoans from "../Dashboard/dashboardPages/manager/ManageLoans";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
     element: <DashBoardLayout />,
     children: [
       { path: "/dashboard", element: <AddLoanManager></AddLoanManager> },
-      { path: "managerManageloan", element: <ManageLolanManager /> },
+      { path: "manage-loans", element: <ManageLoans /> },
       { path: "managerPendingapp", element: <PendingAppManager /> },
       { path: "approvedAppManager", element: <ApprovedAppManager /> },
       { path: "managerProfile", element: <ProfileManager /> },
