@@ -11,35 +11,42 @@ const Login = () => {
   const [logInErr, setLogInErr] = useState("");
   const navigate = useNavigate();
 
-  const handleLogInSubmit = (e) => {
+  const handleLogInSubmit = async (e) => {
     setLogInErr("");
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log("Email:", email);
     console.log("Password:", password);
-    signInUser(email, password)
-      .then((res) => {
-        console.log(res);
-        success("well Come");
-        navigate("/");
-      })
-      .catch((error) => {
-        setLogInErr(error.message);
-      });
+
+    try {
+      await signInUser(email, password);
+      success("well come");
+
+      navigate("/");
+    } catch (error) {
+      setLogInErr(error.message);
+    }
   };
 
   const HadleGoogleSignIn = async () => {
-    const crecredential = await googleSignIn();
-    const currentUser = crecredential.user;
-    const userData = {
-      name: currentUser.displayName,
-      email: currentUser.email,
-      role: "Borrower",
+    try {
+      const crecredential = await googleSignIn();
+      success("Welcome 🎉");
+      navigate("/");
+      const currentUser = crecredential.user;
 
-      photoURL: currentUser.photoURL,
-    };
-    await instance.post("/users", userData);
+      const userData = {
+        name: currentUser.displayName,
+        email: currentUser.email,
+        role: "Borrower",
+        photoURL: currentUser.photoURL,
+      };
+
+      await instance.post("/users", userData);
+    } catch (error) {
+      setLogInErr(error.message);
+    }
   };
 
   return (

@@ -1,9 +1,10 @@
 import React from "react";
+import HeroBAnner from "../components/HeroBAnner";
 
 const Home = () => {
   return (
     <div>
-      <p>Home</p>
+      <HeroBAnner></HeroBAnner>
     </div>
   );
 };
