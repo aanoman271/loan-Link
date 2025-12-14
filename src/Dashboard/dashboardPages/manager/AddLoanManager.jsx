@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import useAxiosSecure from "../../../Hooks/useSecureInstance";
+import useSwal from "../../../Hooks/useSwal";
+import useImgbb from "../../../reuseabble/useImgbb";
+import useAuth from "../../../Hooks/useAuth";
 
 const AddLoanManager = () => {
-  const handleAddLoan = (e) => {
+  const [addLoanErr, setAddLoanErr] = useState("");
+  const { success } = useSwal();
+  const { user } = useAuth();
+  const imgbb = useImgbb();
+  const axiosSecure = useAxiosSecure();
+  const handleAddLoan = async (e) => {
     e.preventDefault();
     const form = e.target;
+    const photo = form.photo.files[0];
+    if (!photo) {
+      return setAddLoanErr("picture cant added");
+    }
+    const photoUrl = await imgbb(photo);
 
     const loanData = {
       title: form.title.value,
@@ -15,9 +29,18 @@ const AddLoanManager = () => {
       emiPlans: form.emiPlans.value,
       showOnHome: form.showOnHome.checked,
       date: new Date().toISOString(),
+      photoUrl,
+      email: user?.email,
     };
 
     console.log(loanData);
+    try {
+      await axiosSecure.post("/manager/addloan", loanData);
+    } catch (error) {
+      setAddLoanErr(error?.response?.data?.message || error.message);
+    }
+    success("laon successfully created");
+
     form.reset();
   };
 
@@ -29,7 +52,6 @@ const AddLoanManager = () => {
         onSubmit={handleAddLoan}
         className="bg-white p-6 rounded-xl shadow space-y-5"
       >
-        {/* Loan Title */}
         <div>
           <label className="font-medium">Loan Title</label>
           <input
@@ -39,7 +61,6 @@ const AddLoanManager = () => {
           />
         </div>
 
-        {/* Description */}
         <div>
           <label className="font-medium">Description</label>
           <textarea
@@ -66,7 +87,6 @@ const AddLoanManager = () => {
           </select>
         </div>
 
-        {/* Interest Rate & Max Limit */}
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             <label className="font-medium">Interest Rate (%)</label>
@@ -89,7 +109,6 @@ const AddLoanManager = () => {
           </div>
         </div>
 
-        {/* Required Documents */}
         <div>
           <label className="font-medium">Required Documents</label>
           <input
@@ -99,7 +118,6 @@ const AddLoanManager = () => {
           />
         </div>
 
-        {/* EMI Plans */}
         <div>
           <label className="font-medium">EMI Plans</label>
           <input
@@ -109,17 +127,16 @@ const AddLoanManager = () => {
           />
         </div>
 
-        {/* Image Upload */}
         <div>
           <label className="font-medium">Upload Images</label>
           <input
             type="file"
+            name="photo"
             multiple
             className="w-full mt-1 file-input file-input-bordered"
           />
         </div>
 
-        {/* Show on Home */}
         <div className="flex items-center gap-3">
           <input
             type="checkbox"
@@ -128,8 +145,8 @@ const AddLoanManager = () => {
           />
           <span>Show on Home Page</span>
         </div>
+        <p className="text-sm text-red-500">{addLoanErr}</p>
 
-        {/* Submit */}
         <button className="btn btn-primary w-full">Add Loan</button>
       </form>
     </div>
