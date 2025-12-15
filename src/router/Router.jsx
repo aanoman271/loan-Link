@@ -11,6 +11,7 @@ import PendingAppManager from "../Dashboard/dashboardPages/manager/PendingAppMan
 import ApprovedAppManager from "../Dashboard/dashboardPages/manager/ApprovedAppManager";
 import ProfileManager from "../Dashboard/dashboardPages/manager/ProfileManager";
 import ManageLoans from "../Dashboard/dashboardPages/manager/ManageLoans";
+import LoanDetailsPage from "../pages/LoanDeatailsPage";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
+      },
+      {
+        path: "loanDeatail/:id",
+        element: <LoanDetailsPage></LoanDetailsPage>,
       },
     ],
   },
