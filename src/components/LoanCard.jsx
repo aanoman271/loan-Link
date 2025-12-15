@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router";
 
 const LoanCard = ({ loan }) => {
   return (
     <div
-      key={loan._id}
+      key={loan?._id}
       className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
     >
       <img

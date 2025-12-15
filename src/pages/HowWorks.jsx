@@ -23,7 +23,7 @@ const HowWorks = () => {
             </p>
             <img className="w-full h-full" src={img} alt="" />
           </div>
-          <p className="text-gray-600">
+          <p className="font-medium text-gray-600">
             Loan managers create and publish loan offers on LoanLink, including
             loan type, interest rate, EMI plans, and required documents. This
             makes loan options transparent and easy to understand.
@@ -36,7 +36,7 @@ const HowWorks = () => {
             </p>
             <img className="w-full h-full" src={img2} alt="" />
           </div>
-          <p className="text-gray-600">
+          <p className="font-medium text-gray-600">
             By clicking View Details, users can see complete loan information
             such as description, EMI plans, maximum limit, and eligibility
             before applying.{" "}
@@ -49,7 +49,7 @@ const HowWorks = () => {
             </p>
             <img className="w-full h-full" src={img3} alt="" />
           </div>
-          <p className="text-gray-600">
+          <p className="text-gray-600 font-medium">
             Users can explore all available loans in one place. They can compare
             interest rates, categories, and limits to choose the best loan for
             their needs.
@@ -62,7 +62,7 @@ const HowWorks = () => {
             </p>
             <img className="w-full h-full" src={img4} alt="" />
           </div>
-          <p className="text-gray-600">
+          <p className="text-gray-600 font-medium">
             Users can apply for a loan online by submitting required documents
             and personal details. The application process is simple, fast, and
             secure.
@@ -75,7 +75,7 @@ const HowWorks = () => {
             </p>
             <img className="w-full h-full" src={img5} alt="" />
           </div>
-          <p className="text-gray-600">
+          <p className="text-gray-600 font-medium">
             Loan managers review applications, verify documents, and evaluate
             eligibility. They can approve or reject applications based on
             provided information.
@@ -88,7 +88,7 @@ const HowWorks = () => {
             </p>
             <img className="w-full h-full" src={img6} alt="" />
           </div>
-          <p className="text-gray-600">
+          <p className="text-gray-600 font-medium">
             Once approved, the loan is successfully passed by the manager, and
             the user is notified. The borrower can then proceed with the
             approved loan amount confidently.
