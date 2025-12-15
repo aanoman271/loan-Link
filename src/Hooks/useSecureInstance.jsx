@@ -1,19 +1,26 @@
+// useAxiosSecure.jsx (সঠিক সংশোধন)
 import { useEffect } from "react";
-import useAuth from "./useAuth";
 import useInstance from "./useInstance";
-
+import useAuth from "./useAuth";
 const useAxiosSecure = () => {
   const instance = useInstance();
   const { user } = useAuth();
 
   useEffect(() => {
     const interceptor = instance.interceptors.request.use(
-      (config) => {
-        if (user?.accessToken) {
-          config.headers.Authorization = `Bearer ${user.accessToken}`;
+      async (config) => {
+        if (user) {
+          try {
+            const idToken = await user.getIdToken(true);
+
+            config.headers.Authorization = `Bearer ${idToken}`;
+          } catch (error) {
+            console.error("Error fetching Firebase ID token:", error);
+          }
         }
         return config;
       },
+
       (error) => {
         return Promise.reject(error);
       }
@@ -22,7 +29,7 @@ const useAxiosSecure = () => {
     return () => {
       instance.interceptors.request.eject(interceptor);
     };
-  }, [user?.accessToken]);
+  }, [user, instance]);
 
   return instance;
 };
