@@ -6,9 +6,28 @@ import useAxiosSecure from "../../../Hooks/useSecureInstance";
 const ManageLoans = () => {
   const axiosSecure = useAxiosSecure();
   const [loans, setLoans] = useState([]);
-  const { err } = useSwal();
+  const { success, err, confirm } = useSwal();
 
   const [search, setSearch] = useState("");
+
+  const handleDelete = async (id, title) => {
+    try {
+      const result = await confirm(
+        `Are you sure you want to delete the loan: ${title}?`
+      );
+      if (result.isConfirmed) {
+        const res = await axiosSecure.delete(`/loan/${id}`);
+        console.log("shuaghsiu");
+
+        if (res.data.deletedCount > 0) {
+          setLoans(loans.filter((loan) => loan._id !== id));
+          success(`Loan "${title}" deleted successfully!`);
+        }
+      }
+    } catch (error) {
+      err(error.response?.data?.message || "Failed to delete loan.");
+    }
+  };
   useEffect(() => {
     const fetch = async () => {
       try {
@@ -28,7 +47,6 @@ const ManageLoans = () => {
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
-      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
         <h2 className="text-2xl font-semibold text-gray-800">Manage Loans</h2>
         <input
@@ -82,7 +100,7 @@ const ManageLoans = () => {
                       Update
                     </Link>
                     <button
-                      // onClick={() => handleDelete(loan._id)}
+                      onClick={() => handleDelete(loan?._id, loan?.title)}
                       className="px-3 py-1 text-sm rounded-md bg-red-500 text-white hover:bg-red-600"
                     >
                       Delete

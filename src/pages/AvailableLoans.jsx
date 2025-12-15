@@ -20,7 +20,7 @@ const AvailableLoans = () => {
         <h2 className="text-3xl font-bold mb-6 text-center">Available Lon</h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {availableLaon.map((loan) => (
-            <LoanCard loan={loan}></LoanCard>
+            <LoanCard key={loan._id} loan={loan}></LoanCard>
           ))}
         </div>
       </div>
