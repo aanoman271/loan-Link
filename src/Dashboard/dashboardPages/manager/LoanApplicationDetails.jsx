@@ -35,7 +35,6 @@ const LoanApplicationDetails = () => {
       </h2>
 
       <div className="bg-white rounded-xl shadow p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Loan Info */}
         <div>
           <h3 className="font-semibold text-lg mb-3">Loan Info</h3>
           <p>
@@ -56,7 +55,6 @@ const LoanApplicationDetails = () => {
           </p>
         </div>
 
-        {/* Borrower Info */}
         <div>
           <h3 className="font-semibold text-lg mb-3">Borrower Info</h3>
           <p>
@@ -74,7 +72,6 @@ const LoanApplicationDetails = () => {
           </p>
         </div>
 
-        {/* Financial Info */}
         <div>
           <h3 className="font-semibold text-lg mb-3">Financial Info</h3>
           <p>
@@ -88,7 +85,6 @@ const LoanApplicationDetails = () => {
           </p>
         </div>
 
-        {/* Address & Notes */}
         <div>
           <h3 className="font-semibold text-lg mb-3">Address & Notes</h3>
           <p>
