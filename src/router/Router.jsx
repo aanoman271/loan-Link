@@ -13,6 +13,7 @@ import ProfileManager from "../Dashboard/dashboardPages/manager/ProfileManager";
 import ManageLoans from "../Dashboard/dashboardPages/manager/ManageLoans";
 import LoanDetailsPage from "../pages/LoanDeatailsPage";
 import UpdateLoan from "../Dashboard/dashboardPages/manager/UpdateLoan";
+import ApplyLoan from "../pages/ApplyLoan";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,12 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "loanDeatail/:id",
+        path: "/loanDeatail/:id",
         element: <LoanDetailsPage></LoanDetailsPage>,
+      },
+      {
+        path: "laonApplication",
+        element: <ApplyLoan></ApplyLoan>,
       },
     ],
   },
@@ -47,7 +52,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/dashboard", element: <AddLoanManager></AddLoanManager> },
       { path: "manage-loans", element: <ManageLoans /> },
-      { path: "managerPendingapp", element: <PendingAppManager /> },
+      { path: "pending-loans", element: <PendingAppManager /> },
       { path: "approvedAppManager", element: <ApprovedAppManager /> },
       { path: "managerProfile", element: <ProfileManager /> },
       { path: "update-loan/:id", element: <UpdateLoan /> },

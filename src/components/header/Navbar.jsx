@@ -3,8 +3,23 @@ import Logo from "../Logo";
 import { Link, NavLink } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import avatar from "../../assets/Tech Life - Add User.png";
+import { IoReorderThree } from "react-icons/io5";
+import useSwal from "../../Hooks/useSwal";
+import { FaArrowRightFromBracket } from "react-icons/fa6";
+
 const Navbar = () => {
-  const { user, authLoadding } = useAuth();
+  const { user, authLoadding, logOut } = useAuth();
+  const { success, err } = useSwal();
+  const HandleLogout = () => {
+    logOut()
+      .then(() => {
+        success("Logged out successfully");
+      })
+      .catch((error) => {
+        err(error.message || "Logout failed");
+      });
+  };
+
   const Links = (
     <>
       <li>
@@ -68,12 +83,7 @@ const Navbar = () => {
 
       <div className="flex items-center gap-3">
         <div className=" flex items-center gap-3">
-          <div>
-            {/* <FaArrowRightToBracket /> */}
-            <Link className="text-gray-800  font-medium" to="login">
-              Log In
-            </Link>
-          </div>
+          <div>{/* <FaArrowRightToBracket /> */}</div>
           <Link
             className="btn py-0  bg-blue-600 text-white  font-medium"
             to="Register"
@@ -89,20 +99,48 @@ const Navbar = () => {
         </div>
 
         {/* className="cursor-pointer hover:border-5 transition-[1s] border-gray-300  w-10 h-10 rounded-full" */}
-        <div
-          className="overflow-hidden cursor-pointer hover:border-gray-400 transition-[1s]  flex justify-center items-center
-  border border-gray-300 w-10 h-10 rounded-full"
-        >
-          {authLoadding ? (
-            <span className="loading loading-ring loading-sm"></span>
-          ) : (
-            <img
-              src={user?.photoURL || avatar}
-              alt="user"
-              className="h-full w-full object-cover rounded-full"
-            />
-          )}
-        </div>
+
+        {user ? (
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className=" m-1">
+              {" "}
+              <div
+                className="overflow-hidden cursor-pointer gap-2 p-1 hover:border-gray-400 transition-[1s]  flex justify-center items-center
+  border border-gray-300   rounded-full"
+              >
+                <IoReorderThree className="w-7 h-7" />
+
+                {authLoadding ? (
+                  <span className="loading loading-ring loading-sm"></span>
+                ) : (
+                  <img
+                    src={user?.photoURL || avatar}
+                    alt="user"
+                    className=" w-8 h-8 object-cover rounded-full"
+                  />
+                )}
+              </div>
+            </div>
+            <ul
+              tabIndex="-1"
+              className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+            >
+              <li>
+                <Link>profile</Link>
+              </li>
+              <li onClick={HandleLogout}>
+                <p>Logout</p>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link
+            className="text-gray-800 flex gap-2 items-center font-medium"
+            to="login"
+          >
+            <FaArrowRightFromBracket className="font-bold" /> Log In
+          </Link>
+        )}
 
         <label className=" flex cursor-pointer gap-2">
           <svg

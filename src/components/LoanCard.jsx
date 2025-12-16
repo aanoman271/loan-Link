@@ -26,7 +26,7 @@ const LoanCard = ({ loan }) => {
         </p>
 
         <Link
-          to={`/loanDeatails/${loan?._id}`}
+          to={`/loanDeatail/${loan?._id}`}
           className="inline-block w-full text-center bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition-colors"
         >
           View Details
