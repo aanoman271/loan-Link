@@ -10,8 +10,8 @@ const ApplyLoan = () => {
   const instance = useAxiosSecure();
   const navigate = useNavigate();
   const { success, err } = useSwal();
-  const { interestRate, loanId, title } = state;
-  console.log(interestRate, loanId, title);
+  const { interestRate, loanOfficer_email, loanId, title } = state;
+  console.log(interestRate, loanId, title, loanOfficer_email);
 
   const handleApply = async (e) => {
     e.preventDefault();
@@ -34,6 +34,7 @@ const ApplyLoan = () => {
       address: form.address.value,
       notes: form.notes.value,
       status: "pending",
+      Officer_email: loanOfficer_email,
     };
     try {
       await instance.post("/loan-applications", applicationData);

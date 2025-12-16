@@ -65,6 +65,7 @@ const LoanDetailsPage = () => {
                   interestRate: loan?.interestRate,
                   title: loan?.title,
                   loanId: loan?._id,
+                  loanOfficer_email: loan?.email,
                 },
               })
             }
