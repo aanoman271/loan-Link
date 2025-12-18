@@ -133,9 +133,10 @@ const Navbar = () => {
                 <IoReorderThree className="w-7 h-7" />
 
                 <img
-                  src={user.photoURL || avatar}
+                  src={user?.photoURL || avatar}
                   alt="user"
                   className=" w-8 h-8 object-cover rounded-full"
+                  referrerPolicy="no-referrer"
                 />
               </div>
             </div>

@@ -17,7 +17,6 @@ const ManageLoans = () => {
       );
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/loan/${id}`);
-        console.log("shuaghsiu");
 
         if (res.data.deletedCount > 0) {
           setLoans(loans.filter((loan) => loan._id !== id));

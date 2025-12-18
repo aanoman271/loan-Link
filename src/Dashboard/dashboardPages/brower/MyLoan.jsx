@@ -4,23 +4,52 @@ import useAxiosSecure from "../../../Hooks/useSecureInstance";
 import { useEffect } from "react";
 import { useState } from "react";
 import useSwal from "../../../Hooks/useSwal";
+import Lodding from "../../../components/Lodding";
 
 const MyLoan = () => {
-  const { err } = useSwal();
+  const { err, success, confirm } = useSwal();
   const instance = useAxiosSecure();
   const [loan, setLoans] = useState([]);
+  const [lodding, setLodding] = useState(true);
   useEffect(() => {
     const fetch = async () => {
       try {
+        setLodding(true);
         const res = await instance.get("/myLoan");
         setLoans(res.data);
       } catch (error) {
         err(error.response?.data?.message || "Rejection failed");
+      } finally {
+        setLodding(false);
       }
     };
     fetch();
   }, [instance]);
   console.log(loan);
+
+  const handleCancel = async (id) => {
+    try {
+      const result = await confirm(
+        `Are you sure you want to cancel your application?`
+      );
+      if (result.isConfirmed) {
+        const res = await instance.delete(`/deleteMyLoan/${id}`);
+        if (res.data.deletedCount > 0) {
+          success("Cancel successfull");
+          const filtaredApp = loan.filter((l) => l._id !== id);
+
+          setLoans(filtaredApp);
+        }
+      }
+    } catch (error) {
+      err(
+        error.response?.data?.message ||
+          error.message ||
+          "something wrong try agian"
+      );
+    }
+  };
+  if (lodding) return <Lodding></Lodding>;
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
@@ -56,18 +85,22 @@ const MyLoan = () => {
                     </span>
                   </td>
                   <td className="p-3 text-center space-x-2">
-                    <Link
-                      to={`/dashboard/applicationDeatails/${loan?._id}`}
-                      className="inline-block px-3 py-1 text-sm rounded-md bg-green-500 text-white hover:bg-green-600"
-                    >
-                      view
-                    </Link>
-                    <button
-                      // onClick={() => handleDelete(loan?._id, loan?.title)}
-                      className="px-3 py-1 text-sm rounded-md bg-red-500 text-white hover:bg-red-600"
-                    >
-                      Delete
-                    </button>
+                    <div className="flex gap-3">
+                      <Link
+                        to={`/dashboard/applicationDeatails/${loan?._id}`}
+                        className="inline-block px-3 py-1 text-sm rounded-md bg-green-500 text-white hover:bg-green-600"
+                      >
+                        view
+                      </Link>
+                      <button
+                        onClick={() => handleCancel(loan?._id)}
+                        className={`${
+                          loan?.status === "pending" ? "visible" : "hidden"
+                        } px-3 py-1 text-sm rounded-md bg-red-500 text-white hover:bg-red-600 `}
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))
