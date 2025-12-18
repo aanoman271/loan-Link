@@ -6,19 +6,47 @@ import avatar from "../../assets/Tech Life - Add User.png";
 import { IoReorderThree } from "react-icons/io5";
 import useSwal from "../../Hooks/useSwal";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
+// import { useEffect } from "react";
+// import { useState } from "react";
+// import useAxiosSecure from "../../Hooks/useSecureInstance";
 
 const Navbar = () => {
-  const { user, authLoadding, logOut } = useAuth();
+  // const instanceSercure = useAxiosSecure();
+  const { user, logOut } = useAuth();
   const { success, err } = useSwal();
+  // const [dbUser, setDbUser] = useState(null);
+  // useEffect(() => {
+  //   const fetch = async () => {
+  //     try {
+  //       const res = await instanceSercure.get("/user");
+  //       setDbUser(res.data);
+  //     } catch (error) {
+  //       err(error?.response?.data?.message || error.message);
+  //     }
+  //   };
+  //   fetch();
+  // }, [user]);
   const HandleLogout = () => {
     logOut()
       .then(() => {
         success("Logged out successfully");
       })
       .catch((error) => {
-        err(error.message || "Logout failed");
+        err(error.promise.message || "Logout failed");
       });
   };
+  // const navigate = useNavigate();
+  // const handleNavigate = () => {
+  //   if (dbUser?.role === "Manager") {
+  //     return navigate("/dashboard");
+  //   }
+  //   if (dbUser?.role === "Borrower") {
+  //     return navigate("/browerDashboard");
+  //   }
+  //   if (dbUser?.role === "Admin") {
+  //     return navigate("/adminDashboard");
+  //   }
+  // };
 
   const Links = (
     <>
@@ -83,17 +111,11 @@ const Navbar = () => {
 
       <div className="flex items-center gap-3">
         <div className=" flex items-center gap-3">
-          <div>{/* <FaArrowRightToBracket /> */}</div>
           <Link
-            className="btn py-0  bg-blue-600 text-white  font-medium"
-            to="Register"
-          >
-            Register
-          </Link>
-          <Link
-            className="btn py-0  bg-blue-600 text-white  font-medium"
             to="/dashboard"
+            className="btn py-0  bg-blue-600 text-white  font-medium"
           >
+            {/* "/dashboard" */}
             Dashboard
           </Link>
         </div>
@@ -110,15 +132,11 @@ const Navbar = () => {
               >
                 <IoReorderThree className="w-7 h-7" />
 
-                {authLoadding ? (
-                  <span className="loading loading-ring loading-sm"></span>
-                ) : (
-                  <img
-                    src={user?.photoURL || avatar}
-                    alt="user"
-                    className=" w-8 h-8 object-cover rounded-full"
-                  />
-                )}
+                <img
+                  src={user.photoURL || avatar}
+                  alt="user"
+                  className=" w-8 h-8 object-cover rounded-full"
+                />
               </div>
             </div>
             <ul

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../Hooks/useAuth";
 import useSwal from "../Hooks/useSwal";
-import useAxiosSecure from "../Hooks/useSecureInstance";
+import useInstance from "../Hooks/useInstance";
 
 const Login = () => {
-  const instance = useAxiosSecure();
+  const instance = useInstance();
+
   const { signInUser, googleSignIn } = useAuth();
   const { success } = useSwal();
   const [logInErr, setLogInErr] = useState("");
@@ -32,8 +33,7 @@ const Login = () => {
   const HadleGoogleSignIn = async () => {
     try {
       const crecredential = await googleSignIn();
-      success("Welcome 🎉");
-      navigate("/");
+
       const currentUser = crecredential.user;
 
       const userData = {
@@ -44,6 +44,8 @@ const Login = () => {
       };
 
       await instance.post("/users", userData);
+      success("Welcome 🎉");
+      navigate("/");
     } catch (error) {
       setLogInErr(error.message);
     }

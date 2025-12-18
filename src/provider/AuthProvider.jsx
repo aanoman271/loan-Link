@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { AuthContext } from "./AuthContext";
 import {
   createUserWithEmailAndPassword,
@@ -49,6 +50,9 @@ const AuthProvider = ({ children }) => {
       unsubsCribe();
     };
   }, []);
+
+  // db users data fetch
+
   const authInfo = {
     user,
     authLoadding,
