@@ -5,10 +5,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 import useSwal from "../../../Hooks/useSwal";
 import Lodding from "../../../components/Lodding";
+import useInstance from "../../../Hooks/useInstance";
 
 const MyLoan = () => {
   const { err, success, confirm } = useSwal();
   const instance = useAxiosSecure();
+  const noSecure = useInstance();
   const [loan, setLoans] = useState([]);
   const [lodding, setLodding] = useState(true);
   useEffect(() => {
@@ -49,6 +51,21 @@ const MyLoan = () => {
       );
     }
   };
+
+  const handlePayment = async (loan) => {
+    try {
+      const res = await noSecure.post("/create-payment-session", {
+        loanId: loan._id,
+        email: loan.userEmail,
+      });
+
+      window.location.href = res.data.url;
+    } catch (error) {
+      console.error(error);
+      alert("Payment failed");
+    }
+  };
+
   if (lodding) return <Lodding></Lodding>;
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
@@ -85,7 +102,7 @@ const MyLoan = () => {
                     </span>
                   </td>
                   <td className="p-3 text-center space-x-2">
-                    <div className="flex gap-3">
+                    <div className="flex  justify-between items-center">
                       <Link
                         to={`/dashboard/applicationDeatails/${loan?._id}`}
                         className="inline-block px-3 py-1 text-sm rounded-md bg-green-500 text-white hover:bg-green-600"
@@ -100,6 +117,18 @@ const MyLoan = () => {
                       >
                         Cancel
                       </button>
+                      {loan?.pay_status === "unPaid" ? (
+                        <button
+                          onClick={() => handlePayment(loan)}
+                          className="cursor-pointer px-4 py-2 w-20 rounded bg-blue-500 text-white hover:bg-blue-600"
+                        >
+                          Pay $10
+                        </button>
+                      ) : (
+                        <span className="px-4 py-2 w-20 rounded bg-green-100 text-green-700 font-medium">
+                          Paid
+                        </span>
+                      )}
                     </div>
                   </td>
                 </tr>

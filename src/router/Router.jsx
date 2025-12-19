@@ -19,6 +19,7 @@ import PrivetRoute from "../PrivetRote/PrivetRoute";
 import ErrorPage from "../components/ErrorPage";
 import MyLoan from "../Dashboard/dashboardPages/brower/MyLoan";
 import ApplicationDeatails from "../Dashboard/dashboardPages/brower/applicationDeatail";
+import PaymentSuccess from "../Dashboard/dashboardPages/brower/PaymentSuccess";
 
 const router = createBrowserRouter([
   {
@@ -143,7 +144,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-
+  {
+    path: "/payment-success",
+    element: <PaymentSuccess />,
+  },
   {
     path: "*",
     element: <ErrorPage></ErrorPage>,

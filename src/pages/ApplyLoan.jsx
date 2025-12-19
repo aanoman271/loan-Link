@@ -34,6 +34,7 @@ const ApplyLoan = () => {
       address: form.address.value,
       notes: form.notes.value,
       status: "pending",
+      pay_status: "unPaid",
       Officer_email: loanOfficer_email,
     };
     try {
