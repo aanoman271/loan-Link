@@ -21,8 +21,7 @@ const ManagerProfile = () => {
       }
     };
     fetch();
-  }, []);
-  console.log(dbUser);
+  }, [instanceSercure]);
   const handleLogout = async () => {
     try {
       const result = await confirm("Are you sure you want to logout?");

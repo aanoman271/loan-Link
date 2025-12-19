@@ -9,6 +9,7 @@ const ManageUser = () => {
   const { err, success } = useSwal();
   const [allUser, setAllUser] = useState([]);
   const [selectedRoles, setSelectedRoles] = useState({});
+  const [suspendedUser, setSuspendedUser] = useState(null);
   useEffect(() => {
     const fetching = async () => {
       try {
@@ -32,6 +33,33 @@ const ManageUser = () => {
     } catch (error) {
       err(error.response.data.message);
     }
+  };
+  const openModal = (suspendUser) => {
+    document.getElementById("my_modal_5").showModal();
+    setSuspendedUser(suspendUser);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const reason = form.reason.value;
+    const feedback = form.feedback.value;
+
+    if (!suspendedUser) return;
+    try {
+      await secureInstance.patch(`/suspend-user/${suspendedUser?._id}`, {
+        reason,
+        feedback,
+        Suspend: true,
+      });
+      success(suspendedUser?.name, " Suspended Now");
+    } catch (error) {
+      err(error.response.data.message || error.message);
+      console.log(error);
+    } finally {
+      document.getElementById("my_modal_5").close();
+    }
+    e.target.reset();
   };
   console.log(allUser);
   return (
@@ -75,24 +103,39 @@ const ManageUser = () => {
                   <td className="p-3 text-gray-600">{user?.role}</td>
 
                   <td className="p-3 text-center space-x-2">
-                    <td className="p-3 text-center space-x-2">
-                      <select
-                        value={
-                          selectedRoles[user._id] || user.role || "borrower"
-                        }
-                        onChange={(e) =>
-                          handleRoleChange(user._id, e.target.value)
-                        }
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      >
-                        <option value="" disabled>
-                          -- Choose a role --
-                        </option>
-                        <option value="borrower">Borrower</option>
-                        <option value="manager">Manager</option>
-                        <option value="admin">Admin</option>
-                      </select>
-                    </td>
+                    <div className="flex gap-2">
+                      <div>
+                        <select
+                          value={
+                            selectedRoles[user._id] || user.role || "borrower"
+                          }
+                          onChange={(e) =>
+                            handleRoleChange(user._id, e.target.value)
+                          }
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                          <option value="" disabled>
+                            -- Choose a role --
+                          </option>
+                          <option value="borrower">Borrower</option>
+                          <option value="manager">Manager</option>
+                          <option value="admin">Admin</option>
+                        </select>
+                      </div>
+
+                      {user?.Suspend ? (
+                        <p className=" flex items-center font-semibold text-red-500">
+                          suspend User
+                        </p>
+                      ) : (
+                        <button
+                          className="btn btn-error"
+                          onClick={() => openModal(user)}
+                        >
+                          Suspend
+                        </button>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))
@@ -106,6 +149,37 @@ const ManageUser = () => {
           </tbody>
         </table>
       </div>
+      {/* Open the modal using document.getElementById('ID').showModal() method */}
+
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <form onSubmit={handleSubmit}>
+            <label className="text-[17px] font-semibold text-red-500">
+              Reason
+            </label>
+            <textarea
+              name="reason"
+              className="border border-gray-400 w-[90%]"
+            ></textarea>
+            <label className="text-[17px] font-semibold text-green-500">
+              Feedback
+            </label>
+            <textarea
+              name="feedback"
+              className="border border-gray-400 w-[90%]"
+            ></textarea>
+            <button type="submit" className="btn btn-success">
+              submit
+            </button>
+          </form>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };

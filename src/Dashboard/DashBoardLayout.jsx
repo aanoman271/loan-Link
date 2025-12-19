@@ -28,7 +28,7 @@ const DashBoardLayout = () => {
     }
   }, [user]);
   const role = dbUser?.role;
-
+  console.log(role);
   const roleLinks = {
     Manager: [
       { name: "Add Loan", to: "/dashboard/add-Loan" },
@@ -41,7 +41,7 @@ const DashBoardLayout = () => {
       { name: "My Loans", to: "/dashboard/my-Loan" },
       { name: "Profile", to: "/dashboard" },
     ],
-    Admin: [
+    admin: [
       { name: "Manage Users", to: "/dashboard/manage-users" },
       { name: "All Loan", to: "/dashboard/manage-allLon" },
       { name: "Loan Applications", to: "/dashboard/manage-application" },
