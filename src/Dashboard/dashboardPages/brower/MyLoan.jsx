@@ -117,7 +117,7 @@ const MyLoan = () => {
                       >
                         Cancel
                       </button>
-                      {loan?.pay_status === "unPaid" ? (
+                      {loan?.status === "unPaid" ? (
                         <button
                           onClick={() => handlePayment(loan)}
                           className="cursor-pointer px-4 py-2 w-20 rounded bg-blue-500 text-white hover:bg-blue-600"

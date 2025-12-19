@@ -39,7 +39,7 @@ const Login = () => {
       const userData = {
         name: currentUser.displayName,
         email: currentUser.email,
-        role: "Borrower",
+        role: "borrower",
         photoURL: currentUser.photoURL,
       };
 

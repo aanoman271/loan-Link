@@ -20,6 +20,10 @@ import ErrorPage from "../components/ErrorPage";
 import MyLoan from "../Dashboard/dashboardPages/brower/MyLoan";
 import ApplicationDeatails from "../Dashboard/dashboardPages/brower/applicationDeatail";
 import PaymentSuccess from "../Dashboard/dashboardPages/brower/PaymentSuccess";
+import Register from "../pages/Register";
+import ManageUser from "../Dashboard/Admin/ManageUser";
+import AdminAllLoan from "../Dashboard/Admin/AdminAllLoan";
+import LoanApplications from "../Dashboard/Admin/LoanApplications";
 
 const router = createBrowserRouter([
   {
@@ -29,15 +33,19 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: Home,
+        element: <Home></Home>,
       },
       {
         path: "allLoan",
-        Component: AllLoan,
+        element: <AllLoan></AllLoan>,
       },
       {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path: "register",
+        element: <Register></Register>,
       },
 
       {
@@ -71,55 +79,28 @@ const router = createBrowserRouter([
       {
         // path: "/managerProfile",
         index: true,
-        element: (
-          <PrivetRoute>
-            <ManagerProfile />
-          </PrivetRoute>
-        ),
+        element: <ManagerProfile />,
       },
 
       {
         path: "add-Loan",
-        element: (
-          <PrivetRoute>
-            {" "}
-            <AddLoanManager></AddLoanManager>
-          </PrivetRoute>
-        ),
+        element: <AddLoanManager></AddLoanManager>,
       },
       {
         path: "manage-loans",
-        element: (
-          <PrivetRoute>
-            {" "}
-            <ManageLoans />
-          </PrivetRoute>
-        ),
+        element: <ManageLoans />,
       },
       {
         path: "pending-loan",
-        element: (
-          <PrivetRoute>
-            <PendingLoan />{" "}
-          </PrivetRoute>
-        ),
+        element: <PendingLoan />,
       },
       {
         path: "approved-loans",
-        element: (
-          <PrivetRoute>
-            {" "}
-            <ApprovedLoan />
-          </PrivetRoute>
-        ),
+        element: <ApprovedLoan />,
       },
       {
         path: "update-loan/:id",
-        element: (
-          <PrivetRoute>
-            <UpdateLoan />
-          </PrivetRoute>
-        ),
+        element: <UpdateLoan />,
       },
       {
         path: "/dashboard/loan-application/:id",
@@ -128,19 +109,23 @@ const router = createBrowserRouter([
       },
       {
         path: "my-Loan",
-        element: (
-          <PrivetRoute>
-            <MyLoan></MyLoan>
-          </PrivetRoute>
-        ),
+        element: <MyLoan></MyLoan>,
       },
       {
         path: "applicationDeatails/:id",
-        element: (
-          <PrivetRoute>
-            <ApplicationDeatails></ApplicationDeatails>
-          </PrivetRoute>
-        ),
+        element: <ApplicationDeatails></ApplicationDeatails>,
+      },
+      {
+        path: "manage-users",
+        element: <ManageUser />,
+      },
+      {
+        path: "manage-allLon",
+        element: <AdminAllLoan></AdminAllLoan>,
+      },
+      {
+        path: "manage-application",
+        element: <LoanApplications></LoanApplications>,
       },
     ],
   },
@@ -148,6 +133,7 @@ const router = createBrowserRouter([
     path: "/payment-success",
     element: <PaymentSuccess />,
   },
+
   {
     path: "*",
     element: <ErrorPage></ErrorPage>,

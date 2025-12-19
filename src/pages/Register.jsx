@@ -60,6 +60,7 @@ const Register = () => {
       });
 
       const userData = { name, email, role, photoURL: userphoto };
+
       await instance.post("/users", userData);
       success("Well Come");
       navigate("/");

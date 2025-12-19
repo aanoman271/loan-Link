@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import useInstance from "../../../Hooks/useInstance";
 import { useNavigate, useSearchParams } from "react-router";
+import useInstance from "../../../Hooks/useInstance";
 
 const PaymentSuccess = () => {
   const [params] = useSearchParams();
@@ -16,7 +16,7 @@ const PaymentSuccess = () => {
     setTimeout(() => {
       updatePayment();
     }, 2000);
-  }, [loanId]);
+  }, [loanId, instance, navigate]);
 
   return <h2 className="text-center text-xl">Payment Successful </h2>;
 };

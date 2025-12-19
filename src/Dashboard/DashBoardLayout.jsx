@@ -6,26 +6,28 @@ import Fotter from "../components/fotter/Fotter";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useSecureInstance";
 import useSwal from "../Hooks/useSwal";
+import Lodding from "../components/Lodding";
 
 const DashBoardLayout = () => {
-  const { user } = useAuth();
+  const { user, authLoadding } = useAuth();
   const { err } = useSwal();
   const [dbUser, setDbUser] = useState();
   const axiosSecure = useAxiosSecure();
   useEffect(() => {
-    const fetch = async () => {
-      try {
-        const promise = await axiosSecure.get("/user");
+    if (!authLoadding && user) {
+      const fetch = async () => {
+        try {
+          const promise = await axiosSecure.get("/user");
 
-        setDbUser(promise.data);
-      } catch (error) {
-        err(error.response.message);
-      }
-    };
-    fetch();
+          setDbUser(promise.data);
+        } catch (error) {
+          err(error.response.message);
+        }
+      };
+      fetch();
+    }
   }, [user]);
   const role = dbUser?.role;
-  console.log(role);
 
   const roleLinks = {
     Manager: [
@@ -35,18 +37,21 @@ const DashBoardLayout = () => {
       { name: "Approved Applications", to: "/dashboard/approved-loans" },
       { name: "Profile", to: "/dashboard" },
     ],
-    Borrower: [
+    borrower: [
       { name: "My Loans", to: "/dashboard/my-Loan" },
       { name: "Profile", to: "/dashboard" },
     ],
     Admin: [
-      { name: "Dashboard", to: "/dashboard" },
       { name: "Manage Users", to: "/dashboard/manage-users" },
-      { name: "Manage Loans", to: "/dashboard/manage-loans" },
+      { name: "All Loan", to: "/dashboard/manage-allLon" },
+      { name: "Loan Applications", to: "/dashboard/manage-application" },
       { name: "Profile", to: "/dashboard" },
     ],
   };
   const links = roleLinks[role] || [];
+  if (!dbUser && authLoadding) {
+    return <Lodding></Lodding>;
+  }
   return (
     <>
       {" "}
@@ -58,16 +63,16 @@ const DashBoardLayout = () => {
 
           <ul className="flex flex-col gap-4 px-5">
             {links.map((link) => (
-              <li key={link.to}>
+              <li key={link?.to}>
                 <NavLink
-                  to={link.to}
+                  to={link?.to}
                   className={({ isActive }) =>
                     isActive
                       ? "bg-blue-700 text-gray-300 btn py-2 rounded w-full"
                       : "bg-blue-500 border-0 text-white btn w-full py-2 rounded"
                   }
                 >
-                  {link.name}
+                  {link?.name}
                 </NavLink>
               </li>
             ))}
