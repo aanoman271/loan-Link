@@ -10,6 +10,7 @@ const ManageUser = () => {
   const [allUser, setAllUser] = useState([]);
   const [selectedRoles, setSelectedRoles] = useState({});
   const [suspendedUser, setSuspendedUser] = useState(null);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     const fetching = async () => {
       try {
@@ -62,17 +63,22 @@ const ManageUser = () => {
     e.target.reset();
   };
   console.log(allUser);
+  const filteredUser = allUser.filter(
+    (loan) =>
+      loan.name.toLowerCase().includes(search.toLowerCase()) ||
+      loan.email.toLowerCase().includes(search.toLowerCase())
+  );
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
         <h2 className="text-2xl font-semibold text-gray-800">Manage user</h2>
-        {/* <input
+        <input
           type="text"
-          placeholder="Search by title or category..."
+          placeholder="Search by Name Email..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full md:w-80 px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-        /> */}
+        />
       </div>
       {/* Table */}
       <div className="overflow-x-auto bg-white rounded-xl shadow">
@@ -86,8 +92,8 @@ const ManageUser = () => {
             </tr>
           </thead>
           <tbody>
-            {allUser.length > 0 ? (
-              allUser.map((user) => (
+            {filteredUser.length > 0 ? (
+              filteredUser.map((user) => (
                 <tr
                   key={user._id}
                   className="border-t hover:bg-gray-50 transition"
@@ -117,9 +123,9 @@ const ManageUser = () => {
                           <option value="" disabled>
                             -- Choose a role --
                           </option>
-                          <option value="borrower">Borrower</option>
-                          <option value="manager">Manager</option>
-                          <option value="admin">Admin</option>
+                          <option value="Borrower">Borrower</option>
+                          <option value="Manager">Manager</option>
+                          <option value="Admin">Admin</option>
                         </select>
                       </div>
 

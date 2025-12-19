@@ -36,7 +36,7 @@ const UpdateLoan = () => {
 
     await instance.patch(`/loans/${id}`, updatedLoan);
     success("Loan updated successfully");
-    navigate("/dashboard/manage-loans");
+    navigate(-1);
   };
 
   // 🔹 Delete loan with confirmation

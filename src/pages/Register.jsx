@@ -118,8 +118,8 @@ const Register = () => {
                 className="select w-full px-4 py-2 border rounded-lg"
               >
                 <option disabled={true}>Role</option>
-                <option value="borrower">Borrower</option>
-                <option value="manager">Manager</option>
+                <option value="Borrower">Borrower</option>
+                <option value="Manager">Manager</option>
               </select>
               <span className="label">Optional</span>
             </fieldset>

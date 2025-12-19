@@ -37,7 +37,7 @@ const ManageLoans = () => {
       }
     };
     fetch();
-  }, []);
+  }, [axiosSecure]);
   const filteredLoans = loans.filter(
     (loan) =>
       loan.title.toLowerCase().includes(search.toLowerCase()) ||

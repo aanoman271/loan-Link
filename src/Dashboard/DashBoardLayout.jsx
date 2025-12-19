@@ -37,11 +37,11 @@ const DashBoardLayout = () => {
       { name: "Approved Applications", to: "/dashboard/approved-loans" },
       { name: "Profile", to: "/dashboard" },
     ],
-    borrower: [
+    Borrower: [
       { name: "My Loans", to: "/dashboard/my-Loan" },
       { name: "Profile", to: "/dashboard" },
     ],
-    admin: [
+    Admin: [
       { name: "Manage Users", to: "/dashboard/manage-users" },
       { name: "All Loan", to: "/dashboard/manage-allLon" },
       { name: "Loan Applications", to: "/dashboard/manage-application" },
