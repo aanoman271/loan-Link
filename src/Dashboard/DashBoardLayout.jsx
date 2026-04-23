@@ -12,21 +12,26 @@ const DashBoardLayout = () => {
   const { user, authLoadding } = useAuth();
   const { err } = useSwal();
   const [dbUser, setDbUser] = useState();
+  const [dbLoading, setDbLoading] = useState(false);
   const axiosSecure = useAxiosSecure();
+
   useEffect(() => {
     if (!authLoadding && user) {
-      const fetch = async () => {
+      const fetchUserData = async () => {
         try {
+          setDbLoading(true);
           const promise = await axiosSecure.get("/user");
-
           setDbUser(promise.data);
         } catch (error) {
-          err(error.response.message);
+          err(error.response?.data?.message || error.message);
+        } finally {
+          setDbLoading(false);
         }
       };
-      fetch();
+      fetchUserData();
     }
-  }, [user]);
+  }, [user, authLoadding]);
+
   const role = dbUser?.role;
   console.log(role);
   const roleLinks = {
@@ -49,9 +54,10 @@ const DashBoardLayout = () => {
     ],
   };
   const links = roleLinks[role] || [];
-  if (!dbUser && authLoadding) {
+  if (authLoadding || dbLoading) {
     return <Lodding></Lodding>;
   }
+
   return (
     <>
       {" "}

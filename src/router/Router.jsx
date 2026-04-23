@@ -3,6 +3,8 @@ import Root from "../root/Root";
 import AllLoan from "../pages/AllLoan";
 import Login from "../pages/Login";
 import Home from "../pages/Home";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
 import DashBoardLayout from "../Dashboard/DashBoardLayout";
 
 import AddLoanManager from "../Dashboard/dashboardPages/manager/AddLoanManager";
@@ -64,6 +66,14 @@ const router = createBrowserRouter([
             <ApplyLoan></ApplyLoan>
           </PrivetRoute>
         ),
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
       },
     ],
   },

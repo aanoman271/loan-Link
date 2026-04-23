@@ -17,7 +17,8 @@ const AvailableLoans = () => {
   return (
     <Section>
       <div>
-        <h2 className="text-3xl font-bold mb-6 text-center">Available Lon</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center">Available Loans</h2>
+
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {availableLaon.map((loan) => (
             <LoanCard key={loan._id} loan={loan}></LoanCard>

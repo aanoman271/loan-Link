@@ -3,29 +3,16 @@ import Logo from "../Logo";
 import { Link, NavLink } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import avatar from "../../assets/Tech Life - Add User.png";
-import { IoReorderThree } from "react-icons/io5";
+import { IoReorderThree, IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
 import useSwal from "../../Hooks/useSwal";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
-// import { useEffect } from "react";
-// import { useState } from "react";
-// import useAxiosSecure from "../../Hooks/useSecureInstance";
+import { useTheme } from "../../provider/ThemeContext";
 
 const Navbar = () => {
-  // const instanceSercure = useAxiosSecure();
   const { user, logOut } = useAuth();
   const { success, err } = useSwal();
-  // const [dbUser, setDbUser] = useState(null);
-  // useEffect(() => {
-  //   const fetch = async () => {
-  //     try {
-  //       const res = await instanceSercure.get("/user");
-  //       setDbUser(res.data);
-  //     } catch (error) {
-  //       err(error?.response?.data?.message || error.message);
-  //     }
-  //   };
-  //   fetch();
-  // }, [user]);
+  const { theme, toggleTheme } = useTheme();
+
   const HandleLogout = () => {
     logOut()
       .then(() => {
@@ -35,18 +22,6 @@ const Navbar = () => {
         err(error.promise.message || "Logout failed");
       });
   };
-  // const navigate = useNavigate();
-  // const handleNavigate = () => {
-  //   if (dbUser?.role === "Manager") {
-  //     return navigate("/dashboard");
-  //   }
-  //   if (dbUser?.role === "Borrower") {
-  //     return navigate("/browerDashboard");
-  //   }
-  //   if (dbUser?.role === "Admin") {
-  //     return navigate("/adminDashboard");
-  //   }
-  // };
 
   const Links = (
     <>
@@ -54,9 +29,11 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive
-              ? "underline text-gray-600 font-medium"
-              : "text-gray-800 font-medium"
+            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${
+              isActive
+                ? "bg-primary/10 text-primary"
+                : "hover:bg-base-200 text-base-content/80 hover:text-base-content"
+            }`
           }
         >
           Home
@@ -66,21 +43,25 @@ const Navbar = () => {
         <NavLink
           to="/allLoan"
           className={({ isActive }) =>
-            isActive
-              ? "underline text-gray-600 font-medium"
-              : "text-gray-800 font-medium"
+            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${
+              isActive
+                ? "bg-primary/10 text-primary"
+                : "hover:bg-base-200 text-base-content/80 hover:text-base-content"
+            }`
           }
         >
-          All-loan{" "}
+          All Loans
         </NavLink>
       </li>
       <li>
         <NavLink
-          to="/"
+          to="/about"
           className={({ isActive }) =>
-            isActive
-              ? "underline text-gray-600 font-medium"
-              : "text-gray-800 font-medium"
+            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${
+              isActive
+                ? "bg-primary/10 text-primary"
+                : "hover:bg-base-200 text-base-content/80 hover:text-base-content"
+            }`
           }
         >
           About Us
@@ -88,113 +69,115 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/"
+          to="/contact"
           className={({ isActive }) =>
-            isActive
-              ? "underline text-gray-600 font-medium"
-              : "text-gray-800 font-medium"
+            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${
+              isActive
+                ? "bg-primary/10 text-primary"
+                : "hover:bg-base-200 text-base-content/80 hover:text-base-content"
+            }`
           }
         >
-          Contract
+          Contact
         </NavLink>
       </li>
     </>
   );
+
   return (
-    <header className="bg-[#f4f4f4] w-full flex justify-between items-center px-4 py-3.5 ">
-      <div className="">
-        <Logo></Logo>
-      </div>
-      <div className="">
-        <ul className="flex  gap-6 navlink">{Links}</ul>
-      </div>
-
-      <div className="flex items-center gap-3">
-        <div className=" flex items-center gap-3">
-          <Link
-            to="/dashboard"
-            className="btn py-0  bg-blue-600 text-white  font-medium"
-          >
-            {/* "/dashboard" */}
-            Dashboard
-          </Link>
-        </div>
-
-        {/* className="cursor-pointer hover:border-5 transition-[1s] border-gray-300  w-10 h-10 rounded-full" */}
-
-        {user ? (
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className=" m-1">
-              {" "}
-              <div
-                className="overflow-hidden cursor-pointer gap-2 p-1 hover:border-gray-400 transition-[1s]  flex justify-center items-center
-  border border-gray-300   rounded-full"
-              >
-                <IoReorderThree className="w-7 h-7" />
-
-                <img
-                  src={user?.photoURL || avatar}
-                  alt="user"
-                  className=" w-8 h-8 object-cover rounded-full"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            </div>
-            <ul
-              tabIndex="-1"
-              className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
-            >
-              <li>
-                <Link>profile</Link>
-              </li>
-              <li onClick={HandleLogout}>
-                <p>Logout</p>
-              </li>
-            </ul>
+    <header className="sticky top-0 z-50 w-full glass-light dark:glass border-b border-base-content/5 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo Section */}
+          <div className="flex-shrink-0 flex items-center">
+            <Logo />
           </div>
-        ) : (
-          <Link
-            className="text-gray-800 flex gap-2 items-center font-medium"
-            to="login"
-          >
-            <FaArrowRightFromBracket className="font-bold" /> Log In
-          </Link>
-        )}
 
-        <label className=" flex cursor-pointer gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="12" cy="12" r="5" />
-            <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
-          </svg>
-          <input
-            type="checkbox"
-            value="synthwave"
-            className="toggle theme-controller"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </label>
+          {/* Navigation Links (Desktop) */}
+          <nav className="hidden md:flex items-center space-x-1">
+            <ul className="flex items-center gap-1">{Links}</ul>
+          </nav>
+
+          {/* Action Icons & Profile */}
+          <div className="flex items-center gap-4">
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-base-200 transition-colors text-base-content/70 hover:text-primary"
+              aria-label="Toggle theme"
+            >
+              {theme === "loanlink-dark" ? (
+                <IoSunnyOutline className="w-5 h-5" />
+              ) : (
+                <IoMoonOutline className="w-5 h-5" />
+              )}
+            </button>
+
+            {/* Dashboard Link */}
+            <Link
+              to="/dashboard"
+              className="hidden sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-primary hover:bg-primary-focus transition-all transform hover:scale-105"
+            >
+              Dashboard
+            </Link>
+
+            {/* User Menu */}
+            {user ? (
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="flex items-center gap-2 p-1 rounded-full border border-base-content/10 hover:border-primary/50 transition-all hover:bg-primary/5"
+                >
+                  <IoReorderThree className="w-6 h-6 text-base-content/70" />
+                  <img
+                    src={user?.photoURL || avatar}
+                    alt="user"
+                    className="w-8 h-8 object-cover rounded-full shadow-sm ring-2 ring-transparent group-hover:ring-primary/20"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content mt-3 z-[1] p-2 shadow-2xl menu menu-sm bg-base-100 rounded-xl w-56 border border-base-content/5 animate-in fade-in slide-in-from-top-1"
+                >
+                  <div className="px-4 py-2 border-b border-base-content/5 mb-1">
+                    <p className="text-xs text-base-content/50 uppercase tracking-wider font-semibold">
+                      Account
+                    </p>
+                    <p className="text-sm font-medium truncate">
+                      {user.displayName || "User"}
+                    </p>
+                  </div>
+                  <li>
+                    <Link to="/dashboard/profile" className="py-2 hover:text-primary">
+                      My Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard/my-loans" className="py-2 hover:text-primary">
+                      My Loans
+                    </Link>
+                  </li>
+                  <div className="divider my-1 opacity-50"></div>
+                  <li onClick={HandleLogout}>
+                    <p className="text-error py-2 hover:bg-error/10 font-medium">
+                      Logout
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <Link
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-base-content hover:text-primary transition-colors"
+                to="/login"
+              >
+                <FaArrowRightFromBracket className="w-4 h-4" /> 
+                <span>Log In</span>
+              </Link>
+            )}
+          </div>
+        </div>
       </div>
     </header>
   );
