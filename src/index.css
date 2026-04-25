@@ -53,6 +53,14 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+@utility card-modern {
+  @apply bg-base-100 rounded-2xl border border-base-content/5 shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+@utility glow-primary {
+  box-shadow: 0 0 15px -3px var(--color-primary);
+}
+
 /* Base styles and overrides */
 @layer base {
   body {

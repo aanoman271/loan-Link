@@ -45,77 +45,91 @@ const ApprovedLoan = () => {
   );
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
-        <h2 className="text-2xl font-semibold text-gray-800">
-          Approved Loan Applications
-        </h2>
-        <input
-          type="text"
-          placeholder="Search by borrower name or email..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full md:w-80 px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-        />
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+      {/* Header Section */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-6">
+        <div>
+          <h2 className="text-3xl font-bold text-base-content">Approved Applications</h2>
+          <p className="text-base-content/50 mt-1">Successfully approved loan requests for your assigned area.</p>
+        </div>
+        
+        <div className="relative group">
+          <input
+            type="text"
+            placeholder="Search approved borrower..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full md:w-80 pl-10 pr-4 py-3 bg-base-100 border border-base-content/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all border-transparent focus:border-primary/30 shadow-sm"
+          />
+          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-base-content/30 group-focus-within:text-primary transition-colors">
+             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          </div>
+        </div>
       </div>
 
-      <div className="overflow-x-auto bg-white rounded-xl shadow">
-        <table className="table w-full">
-          <thead className="bg-gray-100 text-gray-700">
-            <tr>
-              <th className="p-3 text-left">Loan ID</th>
-              <th className="p-3 text-left">Borrower</th>
-              <th className="p-3 text-left">Amount</th>
-              <th className="p-3 text-left">Date</th>
-              <th className="p-3 text-center">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredApplications.length > 0 ? (
-              filteredApplications.map((app) => (
-                <tr
-                  key={app?._id}
-                  className="border-t hover:bg-gray-50 transition"
-                >
-                  <td className="p-3 text-sm">{app?._id}</td>
-                  <td className="p-3">
-                    <p className="font-medium text-gray-800">
-                      {app.firstName + " " + app.lastName}
-                    </p>
-                    <p className="text-sm text-gray-500">{app?.userEmail}</p>
-                  </td>
-                  <td className="p-3 font-semibold">৳ {app.loanAmount}</td>
-                  <td className="p-3 text-sm text-gray-600">
-                    {new Date(app.createdAt).toLocaleDateString()}
-                  </td>
-                  <td className="p-3 text-center space-x-2">
-                    <button
-                      onClick={() =>
-                        navigate(`/dashboard/loan-application/${app._id}`)
-                      }
-                      className="px-3 py-1 text-sm rounded-md bg-blue-500 text-white hover:bg-blue-600"
-                    >
-                      View
-                    </button>
-
-                    <button
-                      onClick={() => handleReject(app._id)}
-                      className="px-3 py-1 text-sm rounded-md bg-red-500 text-white hover:bg-red-600"
-                    >
-                      Reject after approve
-                    </button>
+      <div className="card-modern overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="table table-zebra w-full">
+            <thead className="bg-base-200/50">
+              <tr>
+                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider">Borrower Info</th>
+                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Amount</th>
+                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Date Approved</th>
+                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredApplications.length > 0 ? (
+                filteredApplications.map((app) => (
+                  <tr key={app?._id} className="hover:bg-base-200/30 transition-colors">
+                    <td className="py-4 px-6">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center text-success font-bold">
+                          {app?.firstName?.charAt(0) || 'B'}
+                        </div>
+                        <div>
+                          <p className="font-bold text-base-content">{app?.firstName} {app?.lastName}</p>
+                          <p className="text-[10px] text-base-content/40 font-bold uppercase tracking-tighter">ID: {app?._id?.slice(-8)}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <span className="font-bold text-base-content">৳ {app.loanAmount.toLocaleString()}</span>
+                    </td>
+                    <td className="py-4 px-6 text-center text-sm text-base-content/50">
+                      {new Date(app.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <div className="flex justify-center gap-2">
+                        <button
+                          onClick={() => navigate(`/dashboard/loan-application/${app._id}`)}
+                          className="btn btn-ghost btn-sm text-info hover:bg-info/10 rounded-xl px-4"
+                        >
+                          View Details
+                        </button>
+                        <button
+                          onClick={() => handleReject(app._id)}
+                          className="btn btn-ghost btn-sm text-error hover:bg-error/10 rounded-xl px-4"
+                        >
+                          Revoke
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4" className="text-center py-20">
+                    <div className="flex flex-col items-center gap-2 opacity-30">
+                       <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                       <p className="text-xl font-bold">No approved applications found</p>
+                    </div>
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="5" className="text-center p-6 text-gray-500">
-                  No pending loan applications found
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

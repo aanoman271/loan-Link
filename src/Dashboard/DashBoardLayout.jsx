@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router";
-import Navbar from "../components/header/Navbar";
-import Fotter from "../components/fotter/Fotter";
+import DashboardSidebar from "../components/DashboardSidebar";
+import DashboardHeader from "../components/DashboardHeader";
 
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useSecureInstance";
@@ -59,41 +59,20 @@ const DashBoardLayout = () => {
   }
 
   return (
-    <>
-      {" "}
-      <Navbar></Navbar>
-      <div className="min-h-screen flex bg-gray-100">
-        {/* SIDEBAR */}
-        <aside className="w-64 bg-[#172358] text-white hidden gap-3 md:flex flex-col">
-          <div className="p-6 text-2xl font-bold bg-blue-900">LoanDash</div>
+    <div className="min-h-screen flex bg-base-200">
+      {/* SIDEBAR */}
+      <DashboardSidebar role={role} />
 
-          <ul className="flex flex-col gap-4 px-5">
-            {links.map((link) => (
-              <li key={link?.to}>
-                <NavLink
-                  to={link?.to}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "bg-blue-700 text-gray-300 btn py-2 rounded w-full"
-                      : "bg-blue-500 border-0 text-white btn w-full py-2 rounded"
-                  }
-                >
-                  {link?.name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-
-          <div className="p-4 border-t border-blue-800"></div>
-        </aside>
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* HEADER */}
+        <DashboardHeader />
 
         {/* MAIN CONTENT */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-4 md:p-8 overflow-y-auto">
           <Outlet />
         </main>
       </div>
-      <Fotter></Fotter>{" "}
-    </>
+    </div>
   );
 };
 
