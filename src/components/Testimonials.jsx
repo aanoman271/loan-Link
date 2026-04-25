@@ -35,11 +35,11 @@ const Testimonials = () => {
   return (
     <section className="py-20 bg-base-200/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-base-content mb-4">
-            Hear from Our <span className="text-primary">Community</span>
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-3xl md:text-5xl font-black text-base-content tracking-tight">
+            Hear from Our <span className="text-primary italic">Community</span>
           </h2>
-          <p className="text-base-content/60 text-lg max-w-2xl mx-auto">
+          <p className="text-base-content/60 text-lg max-w-2xl mx-auto leading-relaxed">
             Real stories from real people who have taken control of their financial destiny with us.
           </p>
         </div>

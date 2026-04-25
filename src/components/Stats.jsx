@@ -101,7 +101,7 @@ const Stats = () => {
                 </div>
 
                 <div className="flex flex-col items-center gap-1">
-                  <h3 className="text-3xl md:text-4xl font-black text-base-content tracking-tighter">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-base-content tracking-tighter">
                     {stat.value}
                   </h3>
 
