@@ -6,6 +6,7 @@ import img3 from "../assets/img3.jpg";
 import img4 from "../assets/img4.jpg";
 import img5 from "../assets/img5.jpg";
 import img6 from "../assets/img6.jpg";
+import { Link } from "react-router";
 const HowWorks = () => {
   const steps = [
     {
@@ -71,8 +72,8 @@ const HowWorks = () => {
         {/* Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {steps.map((step) => (
-            <div 
-              key={step.id} 
+            <div
+              key={step.id}
               className="card-modern group p-8 relative overflow-hidden flex flex-col items-center text-center animate-in fade-in slide-in-from-bottom-4 duration-700"
               style={{ animationDelay: `${step.id * 100}ms` }}
             >
@@ -83,13 +84,13 @@ const HowWorks = () => {
 
               {/* Image Container */}
               <div className="relative mb-8 w-full h-48 overflow-hidden rounded-2xl shadow-lg border border-base-content/5">
-                <img 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                  src={step.image} 
-                  alt={step.title} 
+                <img
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  src={step.image}
+                  alt={step.title}
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>
-                
+
                 {/* ID Badge */}
                 <div className={`absolute top-4 left-4 w-10 h-10 rounded-xl ${step.accent} flex items-center justify-center font-black shadow-lg backdrop-blur-md`}>
                   {step.id}
@@ -117,7 +118,7 @@ const HowWorks = () => {
           <div className="inline-block p-[2px] rounded-2xl bg-linear-to-r from-primary via-secondary to-accent shadow-xl shadow-primary/20">
             <div className="px-10 py-4 bg-base-100 rounded-2xl flex flex-col md:flex-row items-center gap-6">
               <p className="text-base-content/70 font-medium">Ready to start your journey?</p>
-              <button className="btn btn-primary rounded-xl px-8 shadow-glow-primary">Apply for a Loan</button>
+              <Link to="/allLoan" className="btn btn-primary rounded-xl px-8 shadow-glow-primary">Apply for a Loan</Link>
             </div>
           </div>
         </div>

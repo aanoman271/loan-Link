@@ -1,5 +1,6 @@
 import React from "react";
 import { FaRocket, FaUsers, FaShieldAlt, FaHandshake } from "react-icons/fa";
+import { Link } from "react-router";
 
 const About = () => {
   return (
@@ -12,8 +13,8 @@ const About = () => {
               Empowering Your <span className="text-primary italic">Financial Future</span>
             </h2>
             <p className="text-base md:text-lg text-base-content/60 max-w-3xl mx-auto leading-relaxed">
-              LoanLink is more than just a lending platform. We're a technology-driven 
-              financial partner dedicated to making credit accessible, transparent, 
+              LoanLink is more than just a lending platform. We're a technology-driven
+              financial partner dedicated to making credit accessible, transparent,
               and fair for everyone.
             </p>
           </div>
@@ -28,9 +29,9 @@ const About = () => {
               <div className="space-y-4">
                 <h3 className="text-2xl md:text-3xl font-bold text-base-content">Our Mission</h3>
                 <p className="text-base-content/70 text-base md:text-lg leading-relaxed">
-                  To revolutionize the lending industry by leveraging cutting-edge technology 
-                  to provide seamless, secure, and personalized financial solutions. We believe 
-                  that everyone deserves the opportunity to achieve their dreams without being 
+                  To revolutionize the lending industry by leveraging cutting-edge technology
+                  to provide seamless, secure, and personalized financial solutions. We believe
+                  that everyone deserves the opportunity to achieve their dreams without being
                   held back by complex financial hurdles.
                 </p>
               </div>
@@ -47,9 +48,9 @@ const About = () => {
             </div>
             <div className="relative order-1 lg:order-2">
               <div className="aspect-square md:aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-premium group">
-                <img 
-                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=1000" 
-                  alt="Team working" 
+                <img
+                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=1000"
+                  alt="Team working"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-linear-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -94,17 +95,17 @@ const About = () => {
       <section className="py-20 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="bg-primary rounded-[2.5rem] p-6 sm:p-10 md:p-16 text-center text-white relative overflow-hidden shadow-premium">
-             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-             <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-            
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+
             <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black mb-6 relative z-10 tracking-tight leading-tight">
-               Ready to start your <br className="hidden sm:block" /> journey?
+              Ready to start your <br className="hidden sm:block" /> journey?
             </h2>
             <p className="text-white/80 text-sm sm:text-base md:text-lg mb-10 max-w-xl mx-auto relative z-10 leading-relaxed">
               Join thousands of satisfied customers who have found their financial freedom with LoanLink.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
-              <button className="btn bg-white hover:bg-base-200 text-primary border-none rounded-2xl px-8 sm:px-10 h-12 sm:h-14 font-bold shadow-lg shadow-black/10 transition-all active:scale-95">Apply for Loan</button>
+              <Link to="/allLoan" className="btn bg-white hover:bg-base-200 text-primary border-none rounded-2xl px-8 sm:px-10 h-12 sm:h-14 font-bold shadow-lg shadow-black/10 transition-all active:scale-95">Apply for Loan</Link>
               <button className="btn btn-outline text-white hover:bg-white/10 border-white/30 rounded-2xl px-8 sm:px-10 h-12 sm:h-14 font-bold transition-all active:scale-95">Contact Sales</button>
             </div>
           </div>

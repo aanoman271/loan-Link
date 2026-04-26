@@ -155,7 +155,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/my-loans" className="py-2 hover:text-primary">
+                    <Link to="/dashboard/my-Loan" className="py-2 hover:text-primary">
                       My Loans
                     </Link>
                   </li>

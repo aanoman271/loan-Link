@@ -34,7 +34,7 @@ const LoanCard = ({ loan }) => {
               {loan?.category}
             </span>
           </div>
-          
+
           <div className="space-y-2 text-sm text-base-content/60">
             <div className="flex justify-between items-center">
               <span>Max Limit</span>
@@ -42,7 +42,7 @@ const LoanCard = ({ loan }) => {
             </div>
             <div className="flex justify-between items-center">
               <span>Duration</span>
-              <span className="font-medium text-base-content">12-36 Months</span>
+              <span className="font-medium text-base-content">${loan?.emiPlans} Months</span>
             </div>
           </div>
         </div>

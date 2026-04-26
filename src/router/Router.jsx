@@ -26,6 +26,7 @@ import Register from "../pages/Register";
 import ManageUser from "../Dashboard/Admin/ManageUser";
 import AdminAllLoan from "../Dashboard/Admin/AdminAllLoan";
 import LoanApplications from "../Dashboard/Admin/LoanApplications";
+import Profile from "../Dashboard/dashboardPages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
         path: "/loanDeatail/:id",
         element: (
           <PrivetRoute>
-            {" "}
+
             <LoanDetailsPage></LoanDetailsPage>
           </PrivetRoute>
         ),
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
         element: <ManagerProfile />,
       },
 
+      {
+        path: "profile",
+        element: <Profile />,
+      },
       {
         path: "add-Loan",
         element: <AddLoanManager></AddLoanManager>,
