@@ -3,7 +3,7 @@ import { useMemo } from "react";
 const useInstance = () => {
   const instance = useMemo(() => {
     const newInstance = axios.create({
-      baseURL: "http://localhost:5000",
+      baseURL: "https://loanlink-server-eight.vercel.app/",
       headers: {
         "Content-Type": "application/json",
       },
