@@ -1,3 +1,7 @@
 node_modules
 READ.md
 .env.local
+.vercel
+.dist
+.build
+.firebase
