@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
-import heroImg from "../assets/Loan-underwriting-automation-1.webp";
+import heroImg from "../assets/hero.png";
 
 const HeroBAnner = () => {
   return (
@@ -21,18 +21,18 @@ const HeroBAnner = () => {
             className="text-center lg:text-left"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-6">
-               <span className="relative flex h-2 w-2">
-                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-               </span>
-               Trusted by 2M+ Users
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Trusted by 2M+ Users
             </div>
             <h1 className="text-4xl sm:text-6xl xl:text-7xl font-black tracking-tight text-base-content leading-[1.1]">
               Empowering Your <br className="hidden sm:block" />
               <span className="text-primary italic">Financial</span> <span className="text-secondary">Future</span>
             </h1>
             <p className="mt-6 text-base sm:text-lg lg:text-xl text-base-content/60 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-              LoanLink provides fast, secure, and transparent microloan solutions. 
+              LoanLink provides fast, secure, and transparent microloan solutions.
               Get the support you need to grow your business or manage unexpected expenses with ease.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
@@ -67,7 +67,7 @@ const HeroBAnner = () => {
                 className="w-full h-auto rounded-[2rem] object-cover shadow-inner"
               />
             </div>
-            
+
             {/* Floating Stats Badge */}
             <motion.div
               animate={{ y: [0, -15, 0] }}

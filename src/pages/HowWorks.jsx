@@ -1,11 +1,11 @@
 import React from "react";
 import Section from "../reuseabble/Section";
-import img from "../assets/manager.jpg";
-import img2 from "../assets/multiple laons.jpg";
-import img3 from "../assets/img3.jpg";
-import img4 from "../assets/img4.jpg";
-import img5 from "../assets/img5.jpg";
-import img6 from "../assets/img6.jpg";
+import img from "../assets/how-work-1.png";
+import img2 from "../assets/how-work-2.png";
+import img3 from "../assets/how-work-3.png";
+import img4 from "../assets/how-work-4.png";
+import img5 from "../assets/how-work-5.png";
+import img6 from "../assets/how-work-6.png";
 import { Link } from "react-router";
 const HowWorks = () => {
   const steps = [
@@ -74,16 +74,16 @@ const HowWorks = () => {
           {steps.map((step) => (
             <div
               key={step.id}
-              className="card-modern group p-8 relative overflow-hidden flex flex-col items-center text-center animate-in fade-in slide-in-from-bottom-4 duration-700"
+              className="card-modern group p-2  relative overflow-hidden flex flex-col items-center text-center animate-in fade-in slide-in-from-bottom-4 duration-700"
               style={{ animationDelay: `${step.id * 100}ms` }}
             >
               {/* Step Number Background */}
-              <div className="absolute -top-6 -right-6 text-9xl font-black text-base-content/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+              <div className="absolute  -top-6 -right-6 text-9xl font-black text-base-content/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                 {step.id}
               </div>
 
               {/* Image Container */}
-              <div className="relative mb-8 w-full h-48 overflow-hidden rounded-2xl shadow-lg border border-base-content/5">
+              <div className="relative mb-8 w-full h-48 overflow-hidden rounded-t-2xl shadow-lg border border-base-content/5">
                 <img
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   src={step.image}
@@ -92,9 +92,9 @@ const HowWorks = () => {
                 <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>
 
                 {/* ID Badge */}
-                <div className={`absolute top-4 left-4 w-10 h-10 rounded-xl ${step.accent} flex items-center justify-center font-black shadow-lg backdrop-blur-md`}>
+                {/* <div className={`absolute top-4 left-4 w-10 h-10 rounded-xl ${step.accent} flex items-center justify-center font-black shadow-lg backdrop-blur-md`}>
                   {step.id}
-                </div>
+                </div> */}
               </div>
 
               {/* Content */}
