@@ -83,8 +83,8 @@ const Profile = () => {
     <div className="max-w-4xl mx-auto p-4 md:p-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="mb-8 flex justify-between items-center">
         <div>
-          <h2 className="text-3xl font-bold text-base-content">My Profile</h2>
-          <p className="text-base-content/50 mt-1">View and manage your account information.</p>
+          <h2 className="text-3xl font-bold text-app-text">My Profile</h2>
+          <p className="text-app-text-muted mt-1">View and manage your account information.</p>
         </div>
         {!isEditing && (
           <button 
@@ -96,7 +96,7 @@ const Profile = () => {
         )}
       </div>
 
-      <div className="card-modern overflow-hidden bg-base-100 border border-base-content/5">
+      <div className="card-modern overflow-hidden bg-app-surface border border-app-border-subtle">
         {/* Profile Header Background */}
         <div className="h-32 bg-linear-to-r from-primary/20 via-secondary/20 to-primary/20 relative">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)]"></div>
@@ -118,11 +118,11 @@ const Profile = () => {
             </div>
 
             <div className="flex-1 text-center md:text-left pt-2">
-              <h3 className="text-2xl font-bold text-base-content">
+              <h3 className="text-2xl font-bold text-app-text">
                 {user?.displayName || "User"}
               </h3>
               <div className="flex flex-wrap justify-center md:justify-start items-center gap-3 mt-1">
-                <p className="text-base-content/50 font-medium flex items-center gap-1">
+                <p className="text-app-text-muted font-medium flex items-center gap-1">
                   <FaEnvelope className="text-xs" /> {user?.email}
                 </p>
                 <span className="hidden md:inline w-1 h-1 bg-base-content/20 rounded-full"></span>
@@ -134,14 +134,14 @@ const Profile = () => {
           </div>
 
           {isEditing ? (
-            <form onSubmit={handleUpdate} className="space-y-6 pt-6 border-t border-base-content/5">
+            <form onSubmit={handleUpdate} className="space-y-6 pt-6 border-t border-app-border-subtle">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text font-bold">Full Name</span>
                   </label>
                   <div className="relative">
-                    <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-base-content/30">
+                    <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-app-text-muted">
                       <FaUser />
                     </span>
                     <input
@@ -189,47 +189,47 @@ const Profile = () => {
               </div>
             </form>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-8 border-t border-base-content/5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-8 border-t border-app-border-subtle">
               <div className="space-y-6">
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-base-200/30">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-app-surface-hover/30">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                     <FaShieldAlt className="text-xl" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">Account Role</p>
-                    <p className="font-bold text-base-content capitalize">{dbUser?.role || "Loading..."}</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">Account Role</p>
+                    <p className="font-bold text-app-text capitalize">{dbUser?.role || "Loading..."}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-base-200/30">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-app-surface-hover/30">
                   <div className="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center text-success">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">Account Status</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">Account Status</p>
                     <p className="font-bold text-success">Verified & Active</p>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-6">
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-base-200/30">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-app-surface-hover/30">
                   <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
                     <FaEnvelope className="text-xl" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">Email Verified</p>
-                    <p className="font-bold text-base-content">{user?.emailVerified ? "Confirmed" : "Pending Verification"}</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">Email Verified</p>
+                    <p className="font-bold text-app-text">{user?.emailVerified ? "Confirmed" : "Pending Verification"}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 p-4 rounded-2xl bg-base-200/30">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-app-surface-hover/30">
                   <div className="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600">
                     <FaUser className="text-xl" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">Auth Provider</p>
-                    <p className="font-bold text-base-content capitalize">{user?.providerData?.[0]?.providerId || "Email/Password"}</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">Auth Provider</p>
+                    <p className="font-bold text-app-text capitalize">{user?.providerData?.[0]?.providerId || "Email/Password"}</p>
                   </div>
                 </div>
               </div>
@@ -242,3 +242,4 @@ const Profile = () => {
 };
 
 export default Profile;
+

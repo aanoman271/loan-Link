@@ -61,8 +61,8 @@ const PendingLoan = () => {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-6">
         <div>
-          <h2 className="text-3xl font-bold text-base-content">Pending Applications</h2>
-          <p className="text-base-content/50 mt-1">Review and process borrower applications awaiting decision.</p>
+          <h2 className="text-3xl font-bold text-app-text">Pending Applications</h2>
+          <p className="text-app-text-muted mt-1">Review and process borrower applications awaiting decision.</p>
         </div>
         
         <div className="relative group">
@@ -71,9 +71,9 @@ const PendingLoan = () => {
             placeholder="Search borrower or email..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full md:w-80 pl-10 pr-4 py-3 bg-base-100 border border-base-content/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all border-transparent focus:border-primary/30 shadow-sm"
+            className="w-full md:w-80 pl-10 pr-4 py-3 bg-app-surface border border-app-border-subtle rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all border-transparent focus:border-primary/30 shadow-sm"
           />
-          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-base-content/30 group-focus-within:text-primary transition-colors">
+          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-app-text-muted group-focus-within:text-primary transition-colors">
              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </div>
         </div>
@@ -82,33 +82,33 @@ const PendingLoan = () => {
       <div className="card-modern overflow-hidden">
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
-            <thead className="bg-base-200/50">
+            <thead className="bg-app-surface-hover/50">
               <tr>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider">Borrower Info</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Amount</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Date Applied</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Actions</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider">Borrower Info</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Amount</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Date Applied</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredApplications.length > 0 ? (
                 filteredApplications.map((app) => (
-                  <tr key={app?._id} className="hover:bg-base-200/30 transition-colors">
+                  <tr key={app?._id} className="hover:bg-app-surface-hover/30 transition-colors">
                     <td className="py-4 px-6">
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 font-bold">
                           {app?.firstName?.charAt(0) || 'B'}
                         </div>
                         <div>
-                          <p className="font-bold text-base-content">{app?.firstName} {app?.lastName}</p>
-                          <p className="text-[10px] text-base-content/40 font-bold uppercase tracking-tighter">ID: {app?._id?.slice(-8)}</p>
+                          <p className="font-bold text-app-text">{app?.firstName} {app?.lastName}</p>
+                          <p className="text-[10px] text-app-text-muted font-bold uppercase tracking-tighter">ID: {app?._id?.slice(-8)}</p>
                         </div>
                       </div>
                     </td>
                     <td className="py-4 px-6 text-center">
-                      <span className="font-bold text-base-content">৳ {app.loanAmount.toLocaleString()}</span>
+                      <span className="font-bold text-app-text">৳ {app.loanAmount.toLocaleString()}</span>
                     </td>
-                    <td className="py-4 px-6 text-center text-sm text-base-content/50">
+                    <td className="py-4 px-6 text-center text-sm text-app-text-muted">
                       {new Date(app.createdAt).toLocaleDateString()}
                     </td>
                     <td className="py-4 px-6 text-center">
@@ -154,3 +154,4 @@ const PendingLoan = () => {
 };
 
 export default PendingLoan;
+

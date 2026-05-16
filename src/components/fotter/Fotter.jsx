@@ -16,16 +16,16 @@ const Fotter = () => {
               We empower small businesses and individuals with fast, secure financial support.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-base-100/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-app-surface/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
                 <FaFacebookF />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-base-100/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-app-surface/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
                 <FaTwitter />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-base-100/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-app-surface/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
                 <FaLinkedinIn />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-base-100/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-app-surface/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
                 <FaInstagram />
               </a>
             </div>
@@ -63,7 +63,7 @@ const Fotter = () => {
               <input 
                 type="email" 
                 placeholder="Enter your email" 
-                className="w-full px-4 py-3 bg-base-100/10 border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                className="w-full px-4 py-3 bg-app-surface/10 border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
               />
               <button className="w-full bg-primary hover:bg-primary-focus text-white font-bold py-3 rounded-xl transition-all shadow-lg active:scale-95">
                 Subscribe
@@ -86,3 +86,4 @@ const Fotter = () => {
 };
 
 export default Fotter;
+

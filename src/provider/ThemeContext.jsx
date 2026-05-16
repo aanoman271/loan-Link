@@ -4,15 +4,15 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "loanlink-light"
+    localStorage.getItem("theme") || "light"
   );
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
-    
+
     // Also add/remove 'dark' class for standard Tailwind dark mode support
-    if (theme === "loanlink-dark") {
+    if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
@@ -20,7 +20,7 @@ export const ThemeProvider = ({ children }) => {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "loanlink-light" ? "loanlink-dark" : "loanlink-light"));
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
@@ -37,3 +37,4 @@ export const useTheme = () => {
   }
   return context;
 };
+

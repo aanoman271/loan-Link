@@ -1,75 +1,161 @@
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: light --default, dark;
 }
+
+@variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* Brand Colors */
   --color-primary: #0ea5e9;
   --color-primary-focus: #0284c7;
+  --color-primary-content: #ffffff;
   --color-secondary: #6366f1;
   --color-accent: #f43f5e;
+
+  /* Semantic UI Tokens - Default (Light) */
+  --color-app-bg: #f8fafc;
+  --color-app-surface: #ffffff;
+  --color-app-surface-elevated: #ffffff;
+  --color-app-surface-hover: #f1f5f9;
   
-  /* Neutral scale for premium dark mode */
-  --color-neutral: #1e293b;
-  --color-neutral-content: #f8fafc;
-  
+  --color-app-text: #0f172a;
+  --color-app-text-secondary: #475569;
+  --color-app-text-muted: #94a3b8;
+  --color-app-text-inverse: #ffffff;
+
+  --color-app-border: #e2e8f0;
+  --color-app-border-subtle: #f1f5f9;
+  --color-app-border-focus: #0ea5e9;
+
+  --color-app-success: #10b981;
+  --color-app-warning: #f59e0b;
+  --color-app-error: #ef4444;
+  --color-app-info: #3b82f6;
+
   /* Typography */
   --font-sans: "Inter", "system-ui", "-apple-system", "sans-serif";
-  
-  /* Spacing */
-  --spacing-1: 0.25rem;
-  --spacing-2: 0.5rem;
-  --spacing-3: 0.75rem;
-  --spacing-4: 1rem;
-  --spacing-6: 1.5rem;
-  --spacing-8: 2rem;
-  --spacing-12: 3rem;
-  --spacing-16: 4rem;
 
-  /* Radius */
-  --radius-sm: 0.25rem;
+  /* Radius & Shadows */
+  --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
-  
-  /* Shadows */
-  --shadow-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-inner-glow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+
+  --shadow-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  :root {
+    --color-primary: #0ea5e9;
+    --color-primary-focus: #0284c7;
+    --color-primary-content: #ffffff;
+    
+    --color-app-bg: #f8fafc;
+    --color-app-surface: #ffffff;
+    --color-app-surface-elevated: #ffffff;
+    --color-app-surface-hover: #f1f5f9;
+    
+    --color-app-text: #0f172a;
+    --color-app-text-secondary: #475569;
+    --color-app-text-muted: #64748b;
+    
+    --color-app-border: #e2e8f0;
+    --color-app-border-subtle: #f1f5f9;
+  }
+
+  .dark {
+    --color-primary: #38bdf8;
+    --color-primary-focus: #0ea5e9;
+    --color-primary-content: #0f172a;
+    
+    --color-app-bg: #0b1120;
+    --color-app-surface: #131c2f;
+    --color-app-surface-elevated: #1e293b;
+    --color-app-surface-hover: #1e293b;
+    
+    --color-app-text: #f8fafc;
+    --color-app-text-secondary: #94a3b8;
+    --color-app-text-muted: #64748b;
+    
+    --color-app-border: #1e293b;
+    --color-app-border-subtle: rgba(255, 255, 255, 0.03);
+
+    --color-base-100: #131c2f;
+    --color-base-200: #0b1120;
+    --color-base-300: #1e293b;
+  }
+
+  body {
+    @apply bg-app-bg text-app-text transition-colors duration-300 antialiased;
+    font-family: var(--font-sans);
+  }
+
+  /* Premium Focus Rings */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-app-bg;
+  }
+
+  /* DaisyUI Overrides for Premium Feel */
+  .btn {
+    @apply rounded-xl font-bold transition-all active:scale-95;
+  }
+
+  .input, .select, .textarea {
+    @apply bg-app-surface border-app-border focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl transition-all;
+  }
+
+  .card {
+    @apply bg-app-surface border border-app-border shadow-sm rounded-2xl;
+  }
+
+  .table {
+    @apply text-app-text;
+  }
+
+  .table thead th {
+    @apply bg-app-surface-hover text-app-text-secondary font-bold uppercase tracking-wider text-[11px] py-4;
+  }
+
+  .badge {
+    @apply rounded-lg font-bold;
+  }
 }
 
 /* Custom utility for glassmorphism */
 @utility glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 @utility glass-light {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 @utility card-modern {
-  @apply bg-base-100 rounded-2xl border border-base-content/5 shadow-sm hover:shadow-md transition-all duration-300;
+  @apply bg-app-surface rounded-2xl border border-app-border shadow-card hover:shadow-card-hover transition-all duration-300;
 }
 
 @utility glow-primary {
-  box-shadow: 0 0 15px -3px var(--color-primary);
+  box-shadow: 0 0 20px -5px var(--color-primary);
 }
 
-/* Base styles and overrides */
-@layer base {
-  body {
-    @apply transition-colors duration-300;
-  }
+@keyframes shine {
+  0% { transform: translateX(-150%) skewX(-25deg); }
+  100% { transform: translateX(150%) skewX(-25deg); }
 }
 
 @plugin "daisyui/theme" {
-  name: "loanlink-light";
+  name: "light";
   primary: #0ea5e9;
   secondary: #6366f1;
   accent: #f43f5e;
@@ -77,15 +163,17 @@
   "base-100": #ffffff;
   "base-200": #f8fafc;
   "base-300": #f1f5f9;
+  "base-content": #0f172a;
 }
 
 @plugin "daisyui/theme" {
-  name: "loanlink-dark";
+  name: "dark";
   primary: #38bdf8;
   secondary: #818cf8;
   accent: #fb7185;
   neutral: #334155;
-  "base-100": #0f172a;
-  "base-200": #1e293b;
-  "base-300": #334155;
-}
+  "base-100": #131c2f;
+  "base-200": #0b1120;
+  "base-300": #1e293b;
+  "base-content": #f8fafc;
+}

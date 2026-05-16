@@ -17,10 +17,10 @@ const AvailableLoans = () => {
   return (
     <Section>
       <div className="text-center mb-16 space-y-4">
-        <h2 className="text-3xl md:text-5xl font-black text-base-content tracking-tight">
+        <h2 className="text-3xl md:text-5xl font-black text-app-text tracking-tight">
           Available <span className="text-primary italic">Loans</span>
         </h2>
-        <p className="text-base-content/60 text-lg max-w-2xl mx-auto leading-relaxed">
+        <p className="text-app-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
           Explore our curated selection of loan plans tailored to your specific needs.
         </p>
       </div>
@@ -35,3 +35,4 @@ const AvailableLoans = () => {
 };
 
 export default AvailableLoans;
+

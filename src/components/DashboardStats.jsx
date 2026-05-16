@@ -18,11 +18,11 @@ const StatCard = ({ title, value, icon, trend, trendValue, colorClass }) => {
         )}
       </div>
       <div>
-        <p className="text-base-content/50 text-sm font-medium uppercase tracking-wider">{title}</p>
-        <h3 className="text-3xl font-bold mt-1 text-base-content">{value}</h3>
+        <p className="text-app-text-muted text-sm font-medium uppercase tracking-wider">{title}</p>
+        <h3 className="text-3xl font-bold mt-1 text-app-text">{value}</h3>
       </div>
       <div className="pt-2">
-        <div className="w-full bg-base-200 h-1.5 rounded-full overflow-hidden">
+        <div className="w-full bg-app-surface-hover h-1.5 rounded-full overflow-hidden">
           <div 
             className={`h-full rounded-full ${colorClass.split(' ')[0]}`} 
             style={{ width: '65%' }} 
@@ -67,3 +67,4 @@ const DashboardStats = ({ stats, role }) => {
 };
 
 export default DashboardStats;
+

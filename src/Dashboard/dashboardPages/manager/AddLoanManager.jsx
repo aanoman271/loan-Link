@@ -47,8 +47,8 @@ const AddLoanManager = () => {
   return (
     <div className="max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-base-content">Create New Loan Product</h1>
-        <p className="text-base-content/50 mt-1">Fill in the details below to launch a new loan category for borrowers.</p>
+        <h1 className="text-3xl font-bold text-app-text">Create New Loan Product</h1>
+        <p className="text-app-text-muted mt-1">Fill in the details below to launch a new loan category for borrowers.</p>
       </div>
 
       <form
@@ -59,20 +59,20 @@ const AddLoanManager = () => {
           {/* Left Column: Basic Info */}
           <div className="space-y-6">
              <div className="form-control">
-               <label className="label font-bold text-sm text-base-content/70">Loan Title</label>
+               <label className="label font-bold text-sm text-app-text-secondary">Loan Title</label>
                <input
                  name="title"
                  placeholder="e.g. Premium Home Loan"
-                 className="input input-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+                 className="input input-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
                  required
                />
              </div>
 
              <div className="form-control">
-               <label className="label font-bold text-sm text-base-content/70">Category</label>
+               <label className="label font-bold text-sm text-app-text-secondary">Category</label>
                <select
                  name="category"
-                 className="select select-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+                 className="select select-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
                  required
                >
                  <option value="" disabled selected>Select Category</option>
@@ -85,24 +85,24 @@ const AddLoanManager = () => {
 
              <div className="grid grid-cols-2 gap-4">
                 <div className="form-control">
-                  <label className="label font-bold text-sm text-base-content/70">Interest (%)</label>
+                  <label className="label font-bold text-sm text-app-text-secondary">Interest (%)</label>
                   <input
                     type="number"
                     name="interestRate"
                     placeholder="5.5"
                     step="0.01"
-                    className="input input-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+                    className="input input-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
                     required
                   />
                 </div>
 
                 <div className="form-control">
-                  <label className="label font-bold text-sm text-base-content/70">Max Limit ($)</label>
+                  <label className="label font-bold text-sm text-app-text-secondary">Max Limit ($)</label>
                   <input
                     type="number"
                     name="maxLimit"
                     placeholder="50000"
-                    className="input input-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+                    className="input input-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
                     required
                   />
                 </div>
@@ -112,56 +112,56 @@ const AddLoanManager = () => {
           {/* Right Column: Requirements & Images */}
           <div className="space-y-6">
              <div className="form-control">
-               <label className="label font-bold text-sm text-base-content/70">Required Documents</label>
+               <label className="label font-bold text-sm text-app-text-secondary">Required Documents</label>
                <input
                  name="documents"
                  placeholder="NID, Bank Statement, Salary Slip"
-                 className="input input-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+                 className="input input-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
                />
              </div>
 
              <div className="form-control">
-               <label className="label font-bold text-sm text-base-content/70">EMI Plans (Months)</label>
+               <label className="label font-bold text-sm text-app-text-secondary">EMI Plans (Months)</label>
                <input
                  name="emiPlans"
                  placeholder="e.g. 6, 12, 24"
-                 className="input input-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+                 className="input input-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
                />
              </div>
 
              <div className="form-control">
-               <label className="label font-bold text-sm text-base-content/70">Cover Image</label>
+               <label className="label font-bold text-sm text-app-text-secondary">Cover Image</label>
                <input
                  type="file"
                  name="photo"
-                 className="file-input file-input-bordered rounded-xl bg-base-200 border-none w-full"
+                 className="file-input file-input-bordered rounded-xl bg-app-surface-hover border-none w-full"
                />
                <label className="label">
-                 <span className="label-text-alt text-base-content/40 uppercase font-bold text-[10px]">JPG, PNG supported</span>
+                 <span className="label-text-alt text-app-text-muted uppercase font-bold text-[10px]">JPG, PNG supported</span>
                </label>
              </div>
           </div>
         </div>
 
         <div className="form-control">
-          <label className="label font-bold text-sm text-base-content/70">Description</label>
+          <label className="label font-bold text-sm text-app-text-secondary">Description</label>
           <textarea
             name="description"
             rows="4"
             placeholder="Detailed description of the loan benefits and terms..."
-            className="textarea textarea-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+            className="textarea textarea-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
             required
           />
         </div>
 
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-4 border-t border-base-content/5">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-4 border-t border-app-border-subtle">
           <div className="flex items-center gap-3">
             <input
               type="checkbox"
               name="showOnHome"
               className="toggle toggle-primary toggle-sm"
             />
-            <span className="text-sm font-medium text-base-content/70">Display this loan on Home Page</span>
+            <span className="text-sm font-medium text-app-text-secondary">Display this loan on Home Page</span>
           </div>
           
           <div className="flex items-center gap-4">
@@ -179,3 +179,4 @@ const AddLoanManager = () => {
 };
 
 export default AddLoanManager;
+

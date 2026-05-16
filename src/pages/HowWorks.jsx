@@ -54,17 +54,17 @@ const HowWorks = () => {
   ];
 
   return (
-    <Section className="py-20 bg-base-200/30">
+    <Section className="py-20 bg-app-surface-hover/30">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-16 space-y-4">
           <div className="inline-flex items-center justify-center px-4 py-1.5 mb-4 text-sm font-bold tracking-wider text-primary uppercase bg-primary/10 rounded-full">
             The Process
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-base-content tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-black text-app-text tracking-tight">
             How It <span className="text-primary italic">Works</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-base-content/60 text-lg leading-relaxed">
+          <p className="max-w-2xl mx-auto text-app-text-secondary text-lg leading-relaxed">
             Experience a seamless, secure, and transparent loan management journey from application to approval.
           </p>
         </div>
@@ -83,7 +83,7 @@ const HowWorks = () => {
               </div>
 
               {/* Image Container */}
-              <div className="relative mb-8 w-full h-48 overflow-hidden rounded-t-2xl shadow-lg border border-base-content/5">
+              <div className="relative mb-8 w-full h-48 overflow-hidden rounded-t-2xl shadow-lg border border-app-border-subtle">
                 <img
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   src={step.image}
@@ -99,10 +99,10 @@ const HowWorks = () => {
 
               {/* Content */}
               <div className="space-y-4">
-                <h3 className="text-xl font-bold text-base-content group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold text-app-text group-hover:text-primary transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-base-content/60 text-sm leading-relaxed">
+                <p className="text-app-text-secondary text-sm leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -116,8 +116,8 @@ const HowWorks = () => {
         {/* Bottom Call to Action (Optional enhancement) */}
         <div className="mt-20 text-center">
           <div className="inline-block p-[2px] rounded-2xl bg-linear-to-r from-primary via-secondary to-accent shadow-xl shadow-primary/20">
-            <div className="px-10 py-4 bg-base-100 rounded-2xl flex flex-col md:flex-row items-center gap-6">
-              <p className="text-base-content/70 font-medium">Ready to start your journey?</p>
+            <div className="px-10 py-4 bg-app-surface rounded-2xl flex flex-col md:flex-row items-center gap-6">
+              <p className="text-app-text-secondary font-medium">Ready to start your journey?</p>
               <Link to="/allLoan" className="btn btn-primary rounded-xl px-8 shadow-glow-primary">Apply for a Loan</Link>
             </div>
           </div>
@@ -128,3 +128,4 @@ const HowWorks = () => {
 };
 
 export default HowWorks;
+

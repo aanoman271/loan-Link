@@ -29,7 +29,7 @@ const Stats = () => {
     {
       id: 1,
       icon: <FaHandHoldingUsd />,
-      value: ` ৳  ${formatNumberShort(statsSummary.sumOfAmount || 0)}`,
+      value: ` $  ${formatNumberShort(statsSummary.sumOfAmount || 0)}`,
       label: "Loans Disbursed",
       color: "text-blue-500",
       bg: "bg-blue-500/10",
@@ -63,16 +63,16 @@ const Stats = () => {
   ];
 
   return (
-    <section className="py-20 bg-base-100 overflow-hidden">
+    <section className="py-20 bg-app-bg overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-base-content mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-app-text mb-4 tracking-tight">
             Trusted by <span className="text-primary relative inline-block">
               Millions
               <span className="absolute bottom-1 left-0 w-full h-2 bg-primary/10 -z-10 rounded-full"></span>
             </span> Globally
           </h2>
-          <p className="text-base-content/60 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-app-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
             Our numbers speak for themselves. We're committed to transparency and excellence in every transaction.
           </p>
         </div>
@@ -80,16 +80,16 @@ const Stats = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {loading
             ? Array(4).fill(0).map((_, i) => (
-              <div key={i} className="p-8 rounded-3xl border border-base-content/5 bg-base-100/50 animate-pulse">
-                <div className="w-16 h-16 bg-base-content/5 rounded-2xl mx-auto mb-6"></div>
-                <div className="h-10 w-24 bg-base-content/5 rounded-lg mx-auto mb-3"></div>
-                <div className="h-4 w-32 bg-base-content/5 rounded-md mx-auto"></div>
+              <div key={i} className="p-8 rounded-3xl border border-app-border-subtle bg-app-surface/50 animate-pulse">
+                <div className="w-16 h-16 bg-app-surface-hover rounded-2xl mx-auto mb-6"></div>
+                <div className="h-10 w-24 bg-app-surface-hover rounded-lg mx-auto mb-3"></div>
+                <div className="h-4 w-32 bg-app-surface-hover rounded-md mx-auto"></div>
               </div>
             ))
             : stats.map((stat) => (
               <div
                 key={stat.id}
-                className="relative p-8 rounded-3xl border border-base-content/5 glass hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 transform hover:-translate-y-2 text-center group cursor-default"
+                className="relative p-8 rounded-3xl border border-app-border-subtle bg-base-200 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 transform hover:-translate-y-2 text-center group cursor-default"
               >
                 {/* Accent background */}
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 rounded-3xl bg-gradient-to-br from-transparent via-transparent to-${stat.color.split('-')[1]}-500/5`}></div>
@@ -101,7 +101,7 @@ const Stats = () => {
                 </div>
 
                 <div className="flex flex-col items-center gap-1">
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-base-content tracking-tighter">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-app-text tracking-tighter">
                     {stat.value}
                   </h3>
 
@@ -113,7 +113,7 @@ const Stats = () => {
                   )}
                 </div>
 
-                <p className="text-base-content/50 font-semibold text-sm uppercase tracking-wider mt-2 group-hover:text-base-content/70 transition-colors">
+                <p className="text-app-text-muted font-semibold text-sm uppercase tracking-wider mt-2 group-hover:text-app-text-secondary transition-colors">
                   {stat.label}
                 </p>
               </div>
@@ -126,3 +126,4 @@ const Stats = () => {
 };
 
 export default Stats;
+

@@ -72,14 +72,14 @@ const MyLoan = () => {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-6">
         <div>
-          <h2 className="text-3xl font-bold text-base-content">My Applications</h2>
-          <p className="text-base-content/50 mt-1">Track and manage your submitted loan requests.</p>
+          <h2 className="text-3xl font-bold text-app-text">My Applications</h2>
+          <p className="text-app-text-muted mt-1">Track and manage your submitted loan requests.</p>
         </div>
         
         <div className="flex items-center gap-4">
-           <div className="px-4 py-2 bg-base-200 rounded-xl flex items-center gap-3">
+           <div className="px-4 py-2 bg-app-surface-hover rounded-xl flex items-center gap-3">
               <span className="w-2 h-2 bg-primary rounded-full"></span>
-              <span className="text-sm font-bold text-base-content/70">{loan.length} Applications</span>
+              <span className="text-sm font-bold text-app-text-secondary">{loan.length} Applications</span>
            </div>
            <Link to="/allLoan" className="btn btn-primary rounded-xl px-6 shadow-lg shadow-primary/20">Apply New</Link>
         </div>
@@ -89,30 +89,30 @@ const MyLoan = () => {
       <div className="card-modern overflow-hidden">
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
-            <thead className="bg-base-200/50">
+            <thead className="bg-app-surface-hover/50">
               <tr>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider">Loan Title</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Amount</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Status</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Actions</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider">Loan Title</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Amount</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Status</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
               {loan.length > 0 ? (
                 loan.map((item) => (
-                  <tr key={item._id} className="hover:bg-base-200/30 transition-colors">
+                  <tr key={item._id} className="hover:bg-app-surface-hover/30 transition-colors">
                     <td className="py-4 px-6">
                        <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                           </div>
                           <div>
-                             <p className="font-bold text-base-content">{item?.loanTitle}</p>
-                             <p className="text-[10px] text-base-content/40 font-bold uppercase tracking-tighter">REF: {item?._id?.slice(-8)}</p>
+                             <p className="font-bold text-app-text">{item?.loanTitle}</p>
+                             <p className="text-[10px] text-app-text-muted font-bold uppercase tracking-tighter">REF: {item?._id?.slice(-8)}</p>
                           </div>
                        </div>
                     </td>
-                    <td className="py-4 px-6 text-center font-bold text-base-content">
+                    <td className="py-4 px-6 text-center font-bold text-app-text">
                        ৳ {item?.loanAmount.toLocaleString()}
                     </td>
                     <td className="py-4 px-6 text-center">
@@ -177,3 +177,4 @@ const MyLoan = () => {
 };
 
 export default MyLoan;
+

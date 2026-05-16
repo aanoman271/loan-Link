@@ -60,15 +60,15 @@ const DashboardHome = () => {
       {/* Welcome Section */}
       <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="text-sm text-base-content/40 flex items-center gap-2 mb-1">
+          <div className="text-sm text-app-text-muted flex items-center gap-2 mb-1">
             <span>Pages</span>
             <span>/</span>
-            <span className="text-base-content/70">Dashboard</span>
+            <span className="text-app-text-secondary">Dashboard</span>
           </div>
-          <h1 className="text-3xl font-bold text-base-content">
+          <h1 className="text-3xl font-bold text-app-text">
             Dashboard Overview
           </h1>
-          <p className="text-base-content/50 mt-1">
+          <p className="text-app-text-muted mt-1">
             Hello, <span className="text-primary font-semibold">{user?.displayName || "User"}</span>! Here's what's happening today.
           </p>
         </div>
@@ -109,3 +109,4 @@ const DashboardHome = () => {
 };
 
 export default DashboardHome;
+

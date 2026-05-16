@@ -44,8 +44,8 @@ const UpdateLoan = () => {
   if (loading) {
     return (
       <div className="max-w-3xl mx-auto animate-pulse space-y-8">
-        <div className="h-8 bg-base-200 rounded-lg w-1/4"></div>
-        <div className="h-[500px] bg-base-200 rounded-2xl"></div>
+        <div className="h-8 bg-app-surface-hover rounded-lg w-1/4"></div>
+        <div className="h-[500px] bg-app-surface-hover rounded-2xl"></div>
       </div>
     );
   }
@@ -54,12 +54,12 @@ const UpdateLoan = () => {
     <div className="max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold text-base-content">Update Loan Product</h2>
-          <p className="text-base-content/50 mt-1">Modify the terms and conditions of this loan offering.</p>
+          <h2 className="text-3xl font-bold text-app-text">Update Loan Product</h2>
+          <p className="text-app-text-muted mt-1">Modify the terms and conditions of this loan offering.</p>
         </div>
         <button 
           onClick={() => navigate(-1)}
-          className="btn btn-ghost btn-sm rounded-xl hover:bg-base-200"
+          className="btn btn-ghost btn-sm rounded-xl hover:bg-app-surface-hover"
         >
           Go Back
         </button>
@@ -68,22 +68,22 @@ const UpdateLoan = () => {
       <form onSubmit={handleUpdate} className="card-modern p-8 space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="form-control">
-            <label className="label font-bold text-sm text-base-content/70">Loan Title</label>
+            <label className="label font-bold text-sm text-app-text-secondary">Loan Title</label>
             <input
               name="title"
               defaultValue={loan?.title}
               placeholder="e.g. Premium Home Loan"
-              className="input input-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+              className="input input-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
               required
             />
           </div>
 
           <div className="form-control">
-            <label className="label font-bold text-sm text-base-content/70">Category</label>
+            <label className="label font-bold text-sm text-app-text-secondary">Category</label>
             <select
               name="category"
               defaultValue={loan?.category}
-              className="select select-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+              className="select select-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
               required
             >
               <option value="Personal">Personal</option>
@@ -94,44 +94,44 @@ const UpdateLoan = () => {
           </div>
 
           <div className="form-control">
-            <label className="label font-bold text-sm text-base-content/70">Interest Rate (%)</label>
+            <label className="label font-bold text-sm text-app-text-secondary">Interest Rate (%)</label>
             <input
               name="interestRate"
               type="number"
               step="0.01"
               defaultValue={loan?.interestRate}
               placeholder="e.g. 5.5"
-              className="input input-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+              className="input input-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
               required
             />
           </div>
 
           <div className="form-control">
-            <label className="label font-bold text-sm text-base-content/70">Max Loan Limit (৳)</label>
+            <label className="label font-bold text-sm text-app-text-secondary">Max Loan Limit (৳)</label>
             <input
               name="maxLimit"
               type="number"
               defaultValue={loan?.maxLimit}
               placeholder="e.g. 500000"
-              className="input input-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+              className="input input-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
               required
             />
           </div>
         </div>
 
         <div className="form-control">
-          <label className="label font-bold text-sm text-base-content/70">Description</label>
+          <label className="label font-bold text-sm text-app-text-secondary">Description</label>
           <textarea
             name="description"
             defaultValue={loan?.description}
             rows="4"
             placeholder="Describe the loan benefits..."
-            className="textarea textarea-bordered rounded-xl bg-base-200 border-none focus:ring-2 focus:ring-primary/20"
+            className="textarea textarea-bordered rounded-xl bg-app-surface-hover border-none focus:ring-2 focus:ring-primary/20"
             required
           />
         </div>
 
-        <div className="flex justify-end gap-4 pt-4 border-t border-base-content/5">
+        <div className="flex justify-end gap-4 pt-4 border-t border-app-border-subtle">
           <button
             type="button"
             onClick={() => navigate(-1)}
@@ -152,3 +152,4 @@ const UpdateLoan = () => {
 };
 
 export default UpdateLoan;
+

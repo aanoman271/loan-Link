@@ -8,10 +8,10 @@ const Logo = () => {
 
       {/* Text */}
       <div className="flex flex-col">
-        <h1 className="text-xl sm:text-2xl font-black text-base-content tracking-tighter leading-none">
+        <h1 className="text-xl sm:text-2xl font-black text-app-text tracking-tighter leading-none">
           Loan<span className="text-primary">Link</span>
         </h1>
-        <p className="hidden xs:block text-[10px] sm:text-xs text-base-content/50 font-bold uppercase tracking-widest mt-1">
+        <p className="hidden xs:block text-[10px] sm:text-xs text-app-text-muted font-bold uppercase tracking-widest mt-1">
           Fast & Secure Credit
         </p>
       </div>
@@ -20,3 +20,4 @@ const Logo = () => {
 };
 
 export default Logo;
+

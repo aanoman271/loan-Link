@@ -37,7 +37,7 @@ const AllLoan = () => {
   const pages = [...Array(totalPages).keys()].map((n) => n + 1);
 
   return (
-    <div className="bg-base-200 min-h-screen py-12">
+    <div className="bg-app-surface-hover min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
@@ -45,10 +45,10 @@ const AllLoan = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            <h2 className="text-4xl font-extrabold text-base-content">
+            <h2 className="text-4xl font-extrabold text-app-text">
               Explore <span className="text-primary">All Loans</span>
             </h2>
-            <p className="text-base-content/60 mt-2">Find the perfect financial solution for your needs.</p>
+            <p className="text-app-text-secondary mt-2">Find the perfect financial solution for your needs.</p>
           </motion.div>
 
           {/* Search Bar */}
@@ -57,21 +57,21 @@ const AllLoan = () => {
             animate={{ opacity: 1, x: 0 }}
             className="relative w-full md:w-96"
           >
-            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-base-content/40 w-5 h-5" />
+            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-app-text-muted w-5 h-5" />
             <input
               type="text"
               placeholder="Search by title or category..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 bg-base-100 border border-base-content/5 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-sm"
+              className="w-full pl-12 pr-4 py-4 bg-app-surface border border-app-border-subtle rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-sm"
             />
           </motion.div>
         </div>
 
         {/* Content Section */}
         {filteredLoans.length === 0 ? (
-          <div className="text-center py-20 bg-base-100 rounded-3xl border border-dashed border-base-content/10">
-            <p className="text-lg text-base-content/50">No loans found matching your criteria.</p>
+          <div className="text-center py-20 bg-app-surface rounded-3xl border border-dashed border-app-border-subtle">
+            <p className="text-lg text-app-text-muted">No loans found matching your criteria.</p>
           </div>
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -87,7 +87,7 @@ const AllLoan = () => {
             <button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="p-3 rounded-xl bg-base-100 hover:bg-base-300 disabled:opacity-30 disabled:cursor-not-allowed transition-all border border-base-content/5"
+              className="p-3 rounded-xl bg-app-surface hover:bg-base-300 disabled:opacity-30 disabled:cursor-not-allowed transition-all border border-app-border-subtle"
             >
               <FiChevronLeft className="w-5 h-5" />
             </button>
@@ -100,7 +100,7 @@ const AllLoan = () => {
                   className={`w-12 h-12 rounded-xl font-bold transition-all ${
                     page === currentPage
                       ? "bg-primary text-white shadow-lg shadow-primary/20"
-                      : "bg-base-100 hover:bg-base-300 border border-base-content/5"
+                      : "bg-app-surface hover:bg-base-300 border border-app-border-subtle"
                   }`}
                 >
                   {page}
@@ -111,7 +111,7 @@ const AllLoan = () => {
             <button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
-              className="p-3 rounded-xl bg-base-100 hover:bg-base-300 disabled:opacity-30 disabled:cursor-not-allowed transition-all border border-base-content/5"
+              className="p-3 rounded-xl bg-app-surface hover:bg-base-300 disabled:opacity-30 disabled:cursor-not-allowed transition-all border border-app-border-subtle"
             >
               <FiChevronRight className="w-5 h-5" />
             </button>
@@ -123,3 +123,4 @@ const AllLoan = () => {
 };
 
 export default AllLoan;
+

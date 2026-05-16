@@ -49,8 +49,8 @@ const ManageLoans = () => {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-6">
         <div>
-          <h2 className="text-3xl font-bold text-base-content">Manage Loans</h2>
-          <p className="text-base-content/50 mt-1">You have <span className="text-primary font-bold">{filteredLoans.length}</span> active loan products.</p>
+          <h2 className="text-3xl font-bold text-app-text">Manage Loans</h2>
+          <p className="text-app-text-muted mt-1">You have <span className="text-primary font-bold">{filteredLoans.length}</span> active loan products.</p>
         </div>
         
         <div className="flex items-center gap-4">
@@ -60,9 +60,9 @@ const ManageLoans = () => {
                 placeholder="Search products..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full md:w-64 pl-10 pr-4 py-2.5 bg-base-100 border border-base-content/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all border-transparent focus:border-primary/30 shadow-sm"
+                className="w-full md:w-64 pl-10 pr-4 py-2.5 bg-app-surface border border-app-border-subtle rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all border-transparent focus:border-primary/30 shadow-sm"
               />
-              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-base-content/30 group-focus-within:text-primary transition-colors">
+              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-app-text-muted group-focus-within:text-primary transition-colors">
                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
               </div>
            </div>
@@ -74,33 +74,33 @@ const ManageLoans = () => {
       <div className="card-modern overflow-hidden">
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
-            <thead className="bg-base-200/50">
+            <thead className="bg-app-surface-hover/50">
               <tr>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider">Product Info</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Interest</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Category</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Actions</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider">Product Info</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Interest</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Category</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredLoans.length > 0 ? (
                 filteredLoans.map((loan) => (
-                  <tr key={loan._id} className="hover:bg-base-200/30 transition-colors">
+                  <tr key={loan._id} className="hover:bg-app-surface-hover/30 transition-colors">
                     <td className="py-4 px-6">
                       <div className="flex items-center gap-4">
                         <img
                           src={loan?.photoUrl}
                           alt={loan?.title}
-                          className="w-12 h-12 object-cover rounded-xl shadow-sm border border-base-content/5"
+                          className="w-12 h-12 object-cover rounded-xl shadow-sm border border-app-border-subtle"
                         />
-                        <span className="font-bold text-base-content">{loan?.title}</span>
+                        <span className="font-bold text-app-text">{loan?.title}</span>
                       </div>
                     </td>
                     <td className="py-4 px-6 text-center">
                       <span className="font-bold text-primary">{loan?.interestRate}%</span>
                     </td>
                     <td className="py-4 px-6 text-center">
-                       <span className="badge badge-outline border-base-content/10 text-base-content/70 px-3 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider">
+                       <span className="badge badge-outline border-app-border-subtle text-app-text-secondary px-3 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider">
                         {loan?.category}
                       </span>
                     </td>
@@ -124,7 +124,7 @@ const ManageLoans = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="4" className="text-center py-20 text-base-content/30">
+                  <td colSpan="4" className="text-center py-20 text-app-text-muted">
                     <div className="flex flex-col items-center gap-2">
                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                        <p className="text-xl font-bold">No loans products found</p>
@@ -141,3 +141,4 @@ const ManageLoans = () => {
 };
 
 export default ManageLoans;
+

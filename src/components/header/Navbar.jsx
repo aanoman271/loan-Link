@@ -29,10 +29,9 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${
-              isActive
-                ? "bg-primary/10 text-primary"
-                : "hover:bg-base-200 text-base-content/80 hover:text-base-content"
+            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${isActive
+              ? "bg-primary/10 text-primary"
+              : "hover:bg-app-surface-hover text-app-text-secondary hover:text-app-text"
             }`
           }
         >
@@ -43,10 +42,9 @@ const Navbar = () => {
         <NavLink
           to="/allLoan"
           className={({ isActive }) =>
-            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${
-              isActive
-                ? "bg-primary/10 text-primary"
-                : "hover:bg-base-200 text-base-content/80 hover:text-base-content"
+            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${isActive
+              ? "bg-primary/10 text-primary"
+              : "hover:bg-app-surface-hover text-app-text-secondary hover:text-app-text"
             }`
           }
         >
@@ -57,10 +55,9 @@ const Navbar = () => {
         <NavLink
           to="/about"
           className={({ isActive }) =>
-            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${
-              isActive
-                ? "bg-primary/10 text-primary"
-                : "hover:bg-base-200 text-base-content/80 hover:text-base-content"
+            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${isActive
+              ? "bg-primary/10 text-primary"
+              : "hover:bg-app-surface-hover text-app-text-secondary hover:text-app-text"
             }`
           }
         >
@@ -71,10 +68,9 @@ const Navbar = () => {
         <NavLink
           to="/contact"
           className={({ isActive }) =>
-            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${
-              isActive
-                ? "bg-primary/10 text-primary"
-                : "hover:bg-base-200 text-base-content/80 hover:text-base-content"
+            `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${isActive
+              ? "bg-primary/10 text-primary"
+              : "hover:bg-app-surface-hover text-app-text-secondary hover:text-app-text"
             }`
           }
         >
@@ -85,7 +81,7 @@ const Navbar = () => {
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full glass-light dark:glass border-b border-base-content/5 shadow-sm">
+    <header className="sticky top-0 z-50 w-full glass-light dark:glass border-b border-app-border-subtle shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo Section */}
@@ -98,15 +94,15 @@ const Navbar = () => {
             <ul className="flex items-center gap-1">{Links}</ul>
           </nav>
 
-          {/* Action Icons & Profile */}
-          <div className="flex items-center gap-4">
+          {/* Action Icons & Profile (Desktop) */}
+          <div className="hidden md:flex items-center gap-4">
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-base-200 transition-colors text-base-content/70 hover:text-primary"
+              className="p-2 rounded-full hover:bg-app-surface-hover transition-colors text-app-text-secondary hover:text-primary"
               aria-label="Toggle theme"
             >
-              {theme === "loanlink-dark" ? (
+              {theme === "dark" ? (
                 <IoSunnyOutline className="w-5 h-5" />
               ) : (
                 <IoMoonOutline className="w-5 h-5" />
@@ -127,9 +123,9 @@ const Navbar = () => {
                 <div
                   tabIndex={0}
                   role="button"
-                  className="flex items-center gap-2 p-1 rounded-full border border-base-content/10 hover:border-primary/50 transition-all hover:bg-primary/5"
+                  className="flex items-center gap-2 p-1 rounded-full border border-app-border-subtle hover:border-primary/50 transition-all hover:bg-primary/5"
                 >
-                  <IoReorderThree className="w-6 h-6 text-base-content/70" />
+                  <IoReorderThree className="w-6 h-6 text-app-text-secondary" />
                   <img
                     src={user?.photoURL || avatar}
                     alt="user"
@@ -139,10 +135,10 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content mt-3 z-[1] p-2 shadow-2xl menu menu-sm bg-base-100 rounded-xl w-56 border border-base-content/5 animate-in fade-in slide-in-from-top-1"
+                  className="dropdown-content mt-3 z-[1] p-2 shadow-2xl menu menu-sm bg-app-surface-elevated rounded-xl w-56 border border-app-border-subtle animate-in fade-in slide-in-from-top-1"
                 >
-                  <div className="px-4 py-2 border-b border-base-content/5 mb-1">
-                    <p className="text-xs text-base-content/50 uppercase tracking-wider font-semibold">
+                  <div className="px-4 py-2 border-b border-app-border-subtle mb-1">
+                    <p className="text-xs text-app-text-muted uppercase tracking-wider font-semibold">
                       Account
                     </p>
                     <p className="text-sm font-medium truncate">
@@ -169,13 +165,137 @@ const Navbar = () => {
               </div>
             ) : (
               <Link
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-base-content hover:text-primary transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-app-text hover:text-primary transition-colors"
                 to="/login"
               >
-                <FaArrowRightFromBracket className="w-4 h-4" /> 
+                <FaArrowRightFromBracket className="w-4 h-4" />
                 <span>Log In</span>
               </Link>
             )}
+          </div>
+
+          {/* Mobile Menu Dropdown */}
+          <div className="dropdown dropdown-end md:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="p-2 rounded-md border border-app-border-subtle hover:border-primary/50 text-app-text-secondary transition-all hover:bg-primary/5 flex items-center justify-center"
+            >
+              <IoReorderThree className="w-6 h-6" />
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content mt-3 z-[1] p-2 shadow-2xl menu menu-sm bg-app-surface-elevated rounded-xl w-64 border border-app-border-subtle animate-in fade-in slide-in-from-top-1"
+            >
+              {/* Profile Info */}
+              {user && (
+                <div className="px-4 py-3 border-b border-app-border-subtle mb-2 flex items-center gap-3">
+                  <img
+                    src={user?.photoURL || avatar}
+                    alt="user"
+                    className="w-10 h-10 object-cover rounded-full shadow-sm ring-2 ring-transparent"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="overflow-hidden">
+                    <p className="text-sm font-medium text-app-text truncate">
+                      {user.displayName || "User"}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Main Nav Links */}
+              {Links}
+
+              {/* Dashboard Link */}
+              <li>
+                <NavLink
+                  to="/dashboard"
+                  className={({ isActive }) =>
+                    `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${
+                      isActive
+                        ? "bg-primary/10 text-primary"
+                        : "hover:bg-app-surface-hover text-app-text-secondary hover:text-app-text"
+                    }`
+                  }
+                >
+                  Dashboard
+                </NavLink>
+              </li>
+
+              {/* User Specific Links */}
+              {user && (
+                <>
+                  <div className="divider my-1 opacity-50"></div>
+                  <li>
+                    <NavLink
+                      to="/dashboard/profile"
+                      className={({ isActive }) =>
+                        `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${
+                          isActive
+                            ? "bg-primary/10 text-primary"
+                            : "hover:bg-app-surface-hover text-app-text-secondary hover:text-app-text"
+                        }`
+                      }
+                    >
+                      My Profile
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/dashboard/my-Loan"
+                      className={({ isActive }) =>
+                        `transition-all duration-300 px-3 py-1.5 rounded-md text-sm font-medium ${
+                          isActive
+                            ? "bg-primary/10 text-primary"
+                            : "hover:bg-app-surface-hover text-app-text-secondary hover:text-app-text"
+                        }`
+                      }
+                    >
+                      My Loans
+                    </NavLink>
+                  </li>
+                </>
+              )}
+
+              {/* Theme Toggle */}
+              <div className="divider my-1 opacity-50"></div>
+              <div className="px-3 py-2 flex items-center justify-between text-sm font-medium text-app-text-secondary hover:text-app-text transition-colors">
+                <span className="cursor-default">Theme</span>
+                <button
+                  onClick={toggleTheme}
+                  className="p-1.5 rounded-full hover:bg-app-surface-hover transition-colors text-app-text-secondary hover:text-primary border border-app-border-subtle flex items-center justify-center gap-2"
+                  aria-label="Toggle theme"
+                >
+                  {theme === "dark" ? (
+                    <IoSunnyOutline className="w-4 h-4" />
+                  ) : (
+                    <IoMoonOutline className="w-4 h-4" />
+                  )}
+                  <span className="text-xs">{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+                </button>
+              </div>
+
+              {/* Login / Logout */}
+              <div className="divider my-1 opacity-50"></div>
+              {user ? (
+                <li onClick={HandleLogout}>
+                  <p className="text-error py-2 px-3 hover:bg-error/10 font-medium transition-colors rounded-md w-full flex">
+                    Logout
+                  </p>
+                </li>
+              ) : (
+                <div className="px-2 pb-1">
+                  <Link
+                    className="flex items-center justify-center gap-2 w-full py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary-focus transition-colors shadow-sm"
+                    to="/login"
+                  >
+                    <FaArrowRightFromBracket className="w-4 h-4" />
+                    <span>Log In</span>
+                  </Link>
+                </div>
+              )}
+            </ul>
           </div>
         </div>
       </div>
@@ -184,3 +304,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

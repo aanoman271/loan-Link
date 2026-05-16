@@ -28,7 +28,20 @@ const useSwal = () => {
     });
   };
 
-  return { success, err, confirm };
+  const toast = (title = "Success!", icon = "success") => {
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      icon,
+      title,
+    });
+  };
+
+  return { success, err, confirm, toast };
 };
 
 export default useSwal;
+

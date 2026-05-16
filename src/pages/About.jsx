@@ -5,15 +5,15 @@ import formalImage from "../assets/missionPage.png"
 // "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=1000"
 const About = () => {
   return (
-    <div className="bg-base-100 py-16 lg:py-24 overflow-hidden">
+    <div className="bg-app-surface py-16 lg:py-24 overflow-hidden">
       {/* Introduction */}
       <section className="relative mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl md:text-5xl font-black text-base-content mb-6 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-app-text mb-6 tracking-tight">
               Empowering Your <span className="text-primary italic">Financial Future</span>
             </h2>
-            <p className="text-base md:text-lg text-base-content/60 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg text-app-text-secondary max-w-3xl mx-auto leading-relaxed">
               LoanLink is more than just a lending platform. We're a technology-driven
               financial partner dedicated to making credit accessible, transparent,
               and fair for everyone.
@@ -28,8 +28,8 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-8 order-2 lg:order-1">
               <div className="space-y-4">
-                <h3 className="text-2xl md:text-3xl font-bold text-base-content">Our Mission</h3>
-                <p className="text-base-content/70 text-base md:text-lg leading-relaxed">
+                <h3 className="text-2xl md:text-3xl font-bold text-app-text">Our Mission</h3>
+                <p className="text-app-text-secondary text-base md:text-lg leading-relaxed">
                   To revolutionize the lending industry by leveraging cutting-edge technology
                   to provide seamless, secure, and personalized financial solutions. We believe
                   that everyone deserves the opportunity to achieve their dreams without being
@@ -65,7 +65,7 @@ const About = () => {
                 <div className="absolute inset-0 bg-linear-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               <div className="absolute -bottom-6 -left-6 p-6 glass rounded-2xl hidden xl:block max-w-xs shadow-xl animate-in slide-in-from-left-4 duration-1000">
-                <p className="text-sm font-medium italic text-base-content/80">
+                <p className="text-sm font-medium italic text-app-text-secondary">
                   "Our technology simplifies the complex, so you can focus on what matters most to you."
                 </p>
               </div>
@@ -75,10 +75,10 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-20 bg-base-200/50">
+      <section className="py-20 bg-app-surface-hover/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-base-content mb-4 tracking-tight">The Values That Drive Us</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-app-text mb-4 tracking-tight">The Values That Drive Us</h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -92,8 +92,8 @@ const About = () => {
                 <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary text-2xl mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-base-content">{value.title}</h3>
-                <p className="text-base-content/60 text-sm leading-relaxed">{value.desc}</p>
+                <h3 className="text-xl font-bold mb-3 text-app-text">{value.title}</h3>
+                <p className="text-app-text-secondary text-sm leading-relaxed">{value.desc}</p>
               </div>
             ))}
           </div>
@@ -142,3 +142,4 @@ const About = () => {
 };
 
 export default About;
+

@@ -26,28 +26,28 @@ const DashboardActivityTable = ({ role }) => {
 
   return (
     <div className="card-modern mt-8 overflow-hidden">
-      <div className="p-6 border-b border-base-content/5 flex justify-between items-center">
+      <div className="p-6 border-b border-app-border-subtle flex justify-between items-center">
         <div>
-          <h3 className="font-bold text-lg text-base-content">Recent Activity</h3>
-          <p className="text-sm text-base-content/50">Latest loan applications and updates</p>
+          <h3 className="font-bold text-lg text-app-text">Recent Activity</h3>
+          <p className="text-sm text-app-text-muted">Latest loan applications and updates</p>
         </div>
         <button className="btn btn-ghost btn-sm text-primary hover:bg-primary/10">View All</button>
       </div>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
-          <thead className="bg-base-200/50">
+          <thead className="bg-app-surface-hover/50">
             <tr>
-              <th className="text-base-content/60 font-semibold uppercase text-[11px] tracking-wider py-4">Loan ID</th>
-              <th className="text-base-content/60 font-semibold uppercase text-[11px] tracking-wider py-4">Borrower</th>
-              <th className="text-base-content/60 font-semibold uppercase text-[11px] tracking-wider py-4">Amount</th>
-              <th className="text-base-content/60 font-semibold uppercase text-[11px] tracking-wider py-4">Date</th>
-              <th className="text-base-content/60 font-semibold uppercase text-[11px] tracking-wider py-4">Status</th>
-              <th className="text-base-content/60 font-semibold uppercase text-[11px] tracking-wider py-4 text-center">Actions</th>
+              <th className="text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider py-4">Loan ID</th>
+              <th className="text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider py-4">Borrower</th>
+              <th className="text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider py-4">Amount</th>
+              <th className="text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider py-4">Date</th>
+              <th className="text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider py-4">Status</th>
+              <th className="text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider py-4 text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
             {recentLoans.map((loan) => (
-              <tr key={loan.id} className="hover:bg-base-200/30 transition-colors">
+              <tr key={loan.id} className="hover:bg-app-surface-hover/30 transition-colors">
                 <td className="font-bold text-primary">{loan.id}</td>
                 <td>
                   <div className="flex items-center gap-3">
@@ -57,8 +57,8 @@ const DashboardActivityTable = ({ role }) => {
                     <span className="font-medium">{loan.user}</span>
                   </div>
                 </td>
-                <td className="font-semibold">${loan.amount.toLocaleString()}</td>
-                <td className="text-base-content/60 text-sm">{loan.date}</td>
+                <td className="font-semibold text-app-text">${loan.amount.toLocaleString()}</td>
+                <td className="text-app-text-secondary text-sm">{loan.date}</td>
                 <td>{getStatusBadge(loan.status)}</td>
                 <td>
                   <div className="flex justify-center gap-2">
@@ -81,3 +81,4 @@ const DashboardActivityTable = ({ role }) => {
 };
 
 export default DashboardActivityTable;
+

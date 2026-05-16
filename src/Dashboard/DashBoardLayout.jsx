@@ -7,6 +7,7 @@ import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useSecureInstance";
 import useSwal from "../Hooks/useSwal";
 import Lodding from "../components/Lodding";
+import Navbar from "../components/header/Navbar";
 
 const DashBoardLayout = () => {
   const { user, authLoadding } = useAuth();
@@ -14,6 +15,7 @@ const DashBoardLayout = () => {
   const [dbUser, setDbUser] = useState();
   const [dbLoading, setDbLoading] = useState(false);
   const axiosSecure = useAxiosSecure();
+
 
   useEffect(() => {
     if (!authLoadding && user) {
@@ -33,7 +35,7 @@ const DashBoardLayout = () => {
   }, [user, authLoadding]);
 
   const role = dbUser?.role;
-  console.log(role);
+
   const roleLinks = {
     Manager: [
       { name: "Add Loan", to: "/dashboard/add-Loan" },
@@ -59,14 +61,14 @@ const DashBoardLayout = () => {
   }
 
   return (
-    <div className="min-h-screen flex bg-base-200">
+    <div className="min-h-screen flex bg-app-surface-hover">
       {/* SIDEBAR */}
       <DashboardSidebar role={role} />
 
       <div className="flex-1 flex flex-col min-w-0">
         {/* HEADER */}
-        <DashboardHeader />
-
+        {/* <DashboardHeader /> */}
+        <Navbar> </Navbar>
         {/* MAIN CONTENT */}
         <main className="flex-1 p-4 md:p-8 overflow-y-auto">
           <Outlet />
@@ -77,3 +79,4 @@ const DashBoardLayout = () => {
 };
 
 export default DashBoardLayout;
+

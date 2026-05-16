@@ -27,10 +27,10 @@ const LoanApplicationDetails = () => {
   if (!application) {
     return (
       <div className="animate-pulse space-y-8">
-        <div className="h-8 bg-base-200 rounded-lg w-1/4"></div>
+        <div className="h-8 bg-app-surface-hover rounded-lg w-1/4"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-           <div className="h-64 bg-base-200 rounded-2xl"></div>
-           <div className="h-64 bg-base-200 rounded-2xl"></div>
+           <div className="h-64 bg-app-surface-hover rounded-2xl"></div>
+           <div className="h-64 bg-app-surface-hover rounded-2xl"></div>
         </div>
       </div>
     );
@@ -40,8 +40,8 @@ const LoanApplicationDetails = () => {
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold text-base-content">Application Details</h2>
-          <p className="text-base-content/50 mt-1">Full breakdown of borrower profile and request data.</p>
+          <h2 className="text-3xl font-bold text-app-text">Application Details</h2>
+          <p className="text-app-text-muted mt-1">Full breakdown of borrower profile and request data.</p>
         </div>
         <div className={`badge badge-lg rounded-xl px-6 py-4 font-bold border-none shadow-sm ${
           application.status === 'approved' ? 'bg-success/10 text-success' : 
@@ -56,51 +56,51 @@ const LoanApplicationDetails = () => {
         {/* Main Info Column */}
         <div className="lg:col-span-2 space-y-8">
            <div className="card-modern p-8">
-              <h3 className="text-lg font-bold text-base-content mb-6 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-app-text mb-6 flex items-center gap-2">
                  <span className="w-1.5 h-6 bg-primary rounded-full"></span>
                  Borrower Profile
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                  <div className="space-y-1">
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">Full Name</p>
-                    <p className="font-bold text-base-content text-lg">{application.firstName} {application.lastName}</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">Full Name</p>
+                    <p className="font-bold text-app-text text-lg">{application.firstName} {application.lastName}</p>
                  </div>
                  <div className="space-y-1">
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">Email Address</p>
-                    <p className="font-bold text-base-content">{application.userEmail}</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">Email Address</p>
+                    <p className="font-bold text-app-text">{application.userEmail}</p>
                  </div>
                  <div className="space-y-1">
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">Contact Number</p>
-                    <p className="font-bold text-base-content">{application.contactNumber}</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">Contact Number</p>
+                    <p className="font-bold text-app-text">{application.contactNumber}</p>
                  </div>
                  <div className="space-y-1">
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">National ID</p>
-                    <p className="font-bold text-base-content">{application.nationalId}</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">National ID</p>
+                    <p className="font-bold text-app-text">{application.nationalId}</p>
                  </div>
                  <div className="md:col-span-2 space-y-1">
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">Residential Address</p>
-                    <p className="text-base-content/80 leading-relaxed">{application.address}</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">Residential Address</p>
+                    <p className="text-app-text-secondary leading-relaxed">{application.address}</p>
                  </div>
               </div>
            </div>
 
            <div className="card-modern p-8">
-              <h3 className="text-lg font-bold text-base-content mb-6 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-app-text mb-6 flex items-center gap-2">
                  <span className="w-1.5 h-6 bg-secondary rounded-full"></span>
                  Financial & Employment Info
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                  <div className="space-y-1">
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">Primary Income Source</p>
-                    <p className="font-bold text-base-content">{application.incomeSource}</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">Primary Income Source</p>
+                    <p className="font-bold text-app-text">{application.incomeSource}</p>
                  </div>
                  <div className="space-y-1">
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">Monthly Income</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">Monthly Income</p>
                     <p className="font-bold text-primary text-xl">৳ {application.monthlyIncome.toLocaleString()}</p>
                  </div>
                  <div className="md:col-span-2 space-y-1">
-                    <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-wider">Reason for Loan</p>
-                    <p className="text-base-content/80 leading-relaxed italic">"{application.reason}"</p>
+                    <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider">Reason for Loan</p>
+                    <p className="text-app-text-secondary leading-relaxed italic">"{application.reason}"</p>
                  </div>
               </div>
            </div>
@@ -113,7 +113,7 @@ const LoanApplicationDetails = () => {
               <div className="space-y-6">
                  <div>
                     <p className="text-[10px] uppercase font-bold text-primary/50 tracking-wider mb-1">Product Title</p>
-                    <p className="font-bold text-base-content text-lg leading-tight">{application.loanTitle}</p>
+                    <p className="font-bold text-app-text text-lg leading-tight">{application.loanTitle}</p>
                  </div>
                  <div className="flex justify-between items-end">
                     <div>
@@ -122,26 +122,26 @@ const LoanApplicationDetails = () => {
                     </div>
                     <div className="text-right">
                        <p className="text-[10px] uppercase font-bold text-primary/50 tracking-wider mb-1">Interest</p>
-                       <p className="font-bold text-base-content">{application.interestRate}%</p>
+                       <p className="font-bold text-app-text">{application.interestRate}%</p>
                     </div>
                  </div>
                  <div className="pt-4 border-t border-primary/10">
                     <p className="text-[10px] uppercase font-bold text-primary/50 tracking-wider mb-1">Officer Assigned</p>
-                    <p className="text-xs font-medium text-base-content/60">{application.Officer_email}</p>
+                    <p className="text-xs font-medium text-app-text-secondary">{application.Officer_email}</p>
                  </div>
               </div>
            </div>
 
            {application.notes && (
-             <div className="card-modern p-6 bg-base-200/50">
-                <p className="text-[10px] uppercase font-bold text-base-content/40 tracking-wider mb-2">Internal Notes</p>
-                <p className="text-sm text-base-content/70 italic">{application.notes}</p>
+             <div className="card-modern p-6 bg-app-surface-hover/50">
+                <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-wider mb-2">Internal Notes</p>
+                <p className="text-sm text-app-text-secondary italic">{application.notes}</p>
              </div>
            )}
 
            <button 
              onClick={() => window.history.back()}
-             className="btn btn-ghost w-full rounded-2xl hover:bg-base-200"
+             className="btn btn-ghost w-full rounded-2xl hover:bg-app-surface-hover"
            >
              Back to Applications
            </button>
@@ -152,3 +152,4 @@ const LoanApplicationDetails = () => {
 };
 
 export default LoanApplicationDetails;
+

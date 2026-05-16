@@ -19,7 +19,7 @@ const PaymentSuccess = () => {
   }, [loanId, instance, navigate]);
 
   return (
-    <div className="min-h-screen bg-base-100 flex flex-col items-center justify-center p-6 animate-in fade-in duration-1000">
+    <div className="min-h-screen bg-app-surface flex flex-col items-center justify-center p-6 animate-in fade-in duration-1000">
       <div className="card-modern max-w-md w-full p-12 text-center relative overflow-hidden">
         {/* Success Animation Ring */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-linear-to-r from-transparent via-success to-transparent"></div>
@@ -30,15 +30,15 @@ const PaymentSuccess = () => {
           </svg>
         </div>
 
-        <h2 className="text-4xl font-black text-base-content mb-4 tracking-tight">Payment Received!</h2>
-        <p className="text-base-content/60 leading-relaxed mb-8">
+        <h2 className="text-4xl font-black text-app-text mb-4 tracking-tight">Payment Received!</h2>
+        <p className="text-app-text-secondary leading-relaxed mb-8">
           Your loan application fee has been processed successfully. Your application is now ready for review.
         </p>
 
         <div className="space-y-4">
-           <div className="flex items-center justify-center gap-3 py-3 px-6 bg-base-200 rounded-2xl border border-base-content/5">
+           <div className="flex items-center justify-center gap-3 py-3 px-6 bg-app-surface-hover rounded-2xl border border-app-border-subtle">
               <span className="loading loading-ring loading-md text-primary"></span>
-              <p className="text-sm font-bold text-base-content/70">Redirecting to dashboard...</p>
+              <p className="text-sm font-bold text-app-text-secondary">Redirecting to dashboard...</p>
            </div>
            
            <button 
@@ -49,8 +49,8 @@ const PaymentSuccess = () => {
            </button>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-base-content/5">
-           <p className="text-[10px] uppercase font-bold text-base-content/30 tracking-widest">Transaction Secured by Stripe</p>
+        <div className="mt-8 pt-8 border-t border-app-border-subtle">
+           <p className="text-[10px] uppercase font-bold text-app-text-muted tracking-widest">Transaction Secured by Stripe</p>
         </div>
       </div>
     </div>
@@ -58,3 +58,4 @@ const PaymentSuccess = () => {
 };
 
 export default PaymentSuccess;
+

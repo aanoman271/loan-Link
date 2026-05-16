@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
+import { IoWalletOutline, IoTimeOutline, IoArrowForwardOutline, IoSparklesOutline } from "react-icons/io5";
 
 const LoanCard = ({ loan }) => {
   return (
@@ -8,51 +9,79 @@ const LoanCard = ({ loan }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      whileHover={{ y: -5 }}
-      className="group bg-base-100 rounded-2xl shadow-premium border border-base-content/5 overflow-hidden transition-all duration-300 flex flex-col h-full"
+      whileHover={{ y: -8 }}
+      className="group relative bg-app-surface rounded-3xl shadow-card hover:shadow-card-hover border border-app-border-subtle overflow-hidden transition-all duration-500 flex flex-col h-full"
     >
+      {/* Premium Glow Effect on Hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
       {/* Image Wrapper */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-56 overflow-hidden">
         <img
           src={loan?.photoUrl || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop"}
           alt={loan?.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
-        <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-          {loan?.interestRate}% APR
+
+        {/* Darker Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+
+        {/* Floating Category Badge */}
+        <div className="absolute top-4 left-4">
+          <div className="px-3 py-1.5 rounded-xl bg-accent/50 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-widest flex items-center gap-1.5 shadow-lg">
+            {loan?.category}
+          </div>
+        </div>
+
+        {/* APR Badge */}
+        <div className="absolute top-4 right-4 bg-primary px-3 py-1.5 rounded-xl shadow-lg border border-white/10 transform -rotate-2 group-hover:rotate-0 transition-transform duration-300">
+          <span className="text-white text-sm font-black tracking-tight">{loan?.interestRate}% APR</span>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="p-6 flex flex-col flex-grow">
+      {/* Content Section */}
+      <div className="relative p-6 flex flex-col flex-grow bg-app-surface/50 backdrop-blur-sm">
         <div className="flex-grow">
-          <h3 className="text-xl font-bold text-base-content mb-2 group-hover:text-primary transition-colors">
+          <h3 className="text-3xl font-bold text-app-text mb-3 group-hover:text-primary transition-colors duration-300 leading-tight">
             {loan?.title}
           </h3>
-          <div className="flex items-center gap-2 mb-4">
-            <span className="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-wider rounded">
-              {loan?.category}
-            </span>
-          </div>
 
-          <div className="space-y-2 text-sm text-base-content/60">
-            <div className="flex justify-between items-center">
-              <span>Max Limit</span>
-              <span className="font-bold text-base-content">${loan?.maxLimit?.toLocaleString()}</span>
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            {/* Max Limit */}
+            <div className="p-3 rounded-2xl bg-app-surface-hover/50 border border-app-border-subtle group-hover:border-primary/20 transition-colors">
+              <div className="flex items-center gap-2 text-app-text-muted mb-1">
+                <IoWalletOutline className="w-4 h-4" />
+                <span className="text-[10px] font-bold uppercase tracking-wider">Max Limit</span>
+              </div>
+              <p className="text-lg font-black text-app-text tracking-tight">
+                ${loan?.maxLimit?.toLocaleString()}
+              </p>
             </div>
-            <div className="flex justify-between items-center">
-              <span>Duration</span>
-              <span className="font-medium text-base-content">${loan?.emiPlans} Months</span>
+
+            {/* Duration */}
+            <div className="p-3 rounded-2xl bg-app-surface-hover/50 border border-app-border-subtle group-hover:border-primary/20 transition-colors">
+              <div className="flex items-center gap-2 text-app-text-muted mb-1">
+                <IoTimeOutline className="w-4 h-4" />
+                <span className="text-[10px] font-bold uppercase tracking-wider">Duration</span>
+              </div>
+              <p className="text-lg font-black text-app-text tracking-tight">
+                {loan?.emiPlans} <span className="text-xs font-medium text-app-text-muted">Months</span>
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="mt-6">
+        {/* CTA Button */}
+        <div className="mt-4">
           <Link
             to={`/loanDeatail/${loan?._id}`}
-            className="block w-full text-center bg-primary hover:bg-primary-focus text-white font-bold py-3 rounded-xl transition-all shadow-md hover:shadow-lg transform active:scale-95"
+            className="group/btn relative w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/80 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-primary/40 overflow-hidden active:scale-[0.98]"
           >
-            View Details
+            <span className="relative z-10">Explore Loan</span>
+            <IoArrowForwardOutline className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover/btn:translate-x-1" />
+
+            {/* Button Shine Animation */}
+            <div className="absolute inset-0 w-1/2 h-full bg-white/20 skew-x-[-25deg] -translate-x-[150%] group-hover/btn:animate-[shine_0.8s_ease-out]" />
           </Link>
         </div>
       </div>
@@ -61,3 +90,4 @@ const LoanCard = ({ loan }) => {
 };
 
 export default LoanCard;
+

@@ -31,10 +31,10 @@ const DashboardCharts = () => {
       <div className="card-modern p-6 h-[400px] flex flex-col">
         <div className="mb-6 flex justify-between items-center">
           <div>
-            <h3 className="font-bold text-lg text-base-content">Loan Performance</h3>
-            <p className="text-sm text-base-content/50">Monthly loan volume vs revenue</p>
+            <h3 className="font-bold text-lg text-app-text">Loan Performance</h3>
+            <p className="text-sm text-app-text-muted">Monthly loan volume vs revenue</p>
           </div>
-          <select className="select select-sm select-bordered rounded-lg bg-base-200 border-none">
+          <select className="select select-sm select-bordered rounded-lg bg-app-surface-hover border-none text-app-text">
             <option>Last 7 Months</option>
             <option>Last Year</option>
           </select>
@@ -52,24 +52,26 @@ const DashboardCharts = () => {
                   <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-app-border)" />
               <XAxis 
                 dataKey="name" 
                 axisLine={false} 
                 tickLine={false} 
-                tick={{ fill: 'rgba(0,0,0,0.4)', fontSize: 12 }} 
+                tick={{ fill: 'var(--color-app-text-muted)', fontSize: 12 }} 
                 dy={10}
               />
               <YAxis 
                 axisLine={false} 
                 tickLine={false} 
-                tick={{ fill: 'rgba(0,0,0,0.4)', fontSize: 12 }} 
+                tick={{ fill: 'var(--color-app-text-muted)', fontSize: 12 }} 
               />
               <Tooltip 
                 contentStyle={{ 
                   borderRadius: '16px', 
-                  border: 'none', 
-                  boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)',
+                  border: '1px solid var(--color-app-border)', 
+                  backgroundColor: 'var(--color-app-surface-elevated)',
+                  color: 'var(--color-app-text)',
+                  boxShadow: 'var(--shadow-premium)',
                   padding: '12px'
                 }} 
               />
@@ -97,31 +99,33 @@ const DashboardCharts = () => {
       {/* Bar Chart - Distributions */}
       <div className="card-modern p-6 h-[400px] flex flex-col">
         <div className="mb-6">
-          <h3 className="font-bold text-lg text-base-content">User Distribution</h3>
-          <p className="text-sm text-base-content/50">Activity per user segment</p>
+          <h3 className="font-bold text-lg text-app-text">User Distribution</h3>
+          <p className="text-sm text-app-text-muted">Activity per user segment</p>
         </div>
         <div className="flex-1 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data}>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-app-border)" />
               <XAxis 
                 dataKey="name" 
                 axisLine={false} 
                 tickLine={false} 
-                tick={{ fill: 'rgba(0,0,0,0.4)', fontSize: 12 }} 
+                tick={{ fill: 'var(--color-app-text-muted)', fontSize: 12 }} 
                 dy={10}
               />
               <YAxis 
                 axisLine={false} 
                 tickLine={false} 
-                tick={{ fill: 'rgba(0,0,0,0.4)', fontSize: 12 }} 
+                tick={{ fill: 'var(--color-app-text-muted)', fontSize: 12 }} 
               />
               <Tooltip 
-                cursor={{ fill: 'rgba(0,0,0,0.02)' }}
+                cursor={{ fill: 'var(--color-app-surface-hover)' }}
                 contentStyle={{ 
                   borderRadius: '16px', 
-                  border: 'none', 
-                  boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)',
+                  border: '1px solid var(--color-app-border)', 
+                  backgroundColor: 'var(--color-app-surface-elevated)',
+                  color: 'var(--color-app-text)',
+                  boxShadow: 'var(--shadow-premium)',
                   padding: '12px'
                 }} 
               />
@@ -139,3 +143,4 @@ const DashboardCharts = () => {
 };
 
 export default DashboardCharts;
+

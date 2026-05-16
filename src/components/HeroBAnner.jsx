@@ -5,7 +5,7 @@ import heroImg from "../assets/hero.png";
 
 const HeroBAnner = () => {
   return (
-    <section className="relative overflow-hidden bg-base-100 py-12 sm:py-16 lg:py-24">
+    <section className="relative overflow-hidden bg-app-bg py-12 sm:py-16 lg:py-24">
       {/* Background Blobs */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-72 h-72 sm:w-96 sm:h-96 bg-primary/10 rounded-full blur-3xl opacity-50"></div>
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-72 h-72 sm:w-96 sm:h-96 bg-secondary/10 rounded-full blur-3xl opacity-50"></div>
@@ -27,27 +27,26 @@ const HeroBAnner = () => {
               </span>
               Trusted by 2M+ Users
             </div>
-            <h1 className="text-4xl sm:text-6xl xl:text-7xl font-black tracking-tight text-base-content leading-[1.1]">
+            <h1 className="text-4xl sm:text-6xl xl:text-7xl font-black tracking-tight text-app-text leading-[1.1]">
               Empowering Your <br className="hidden sm:block" />
               <span className="text-primary italic">Financial</span> <span className="text-secondary">Future</span>
             </h1>
-            <p className="mt-6 text-base sm:text-lg lg:text-xl text-base-content/60 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+            <p className="mt-6 text-base sm:text-lg lg:text-xl text-app-text-secondary max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
               LoanLink provides fast, secure, and transparent microloan solutions.
               Get the support you need to grow your business or manage unexpected expenses with ease.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Link
-                to="/laonApplication"
-                className="w-full sm:w-auto px-10 py-5 bg-primary hover:bg-primary-focus text-white font-black rounded-2xl shadow-premium transition-all transform hover:scale-105 active:scale-95 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
                 to="/allLoan"
-                className="w-full sm:w-auto px-10 py-5 bg-base-200 hover:bg-base-300 text-base-content font-black rounded-2xl transition-all border border-base-content/5 active:scale-95 text-lg"
+                className="w-full sm:w-auto px-10 py-5 bg-primary hover:bg-primary/94 text-white font-black rounded-2xl shadow-premium transition-all transform hover:scale-102 active:scale-60 text-lg"
               >
                 Explore Plans
               </Link>
+              {/* <Link
+                to="/allLoan"
+                className="w-full sm:w-auto px-10 py-5 bg-app-surface-hover hover:bg-base-300 text-app-text font-black rounded-2xl transition-all border border-app-border-subtle active:scale-95 text-lg"
+              >
+              </Link> */}
             </div>
           </motion.div>
 
@@ -60,7 +59,7 @@ const HeroBAnner = () => {
             className="relative px-4 sm:px-0"
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-secondary/20 rounded-[2rem] sm:rounded-[3rem] blur-3xl animate-pulse"></div>
-            <div className="relative z-10 p-2 sm:p-4 bg-white/30 dark:bg-base-100/30 backdrop-blur-md rounded-[2.5rem] border border-white/20 dark:border-white/5 shadow-2xl">
+            <div className="relative z-10 p-2 sm:p-4 bg-white/30 dark:bg-app-surface/30 backdrop-blur-md rounded-[2.5rem] border border-white/20 dark:border-white/5 shadow-2xl">
               <img
                 src={heroImg}
                 alt="Financial Support"
@@ -72,14 +71,14 @@ const HeroBAnner = () => {
             <motion.div
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-8 -left-2 sm:-left-10 bg-base-100 p-5 rounded-3xl shadow-premium border border-base-content/5 flex items-center gap-4 z-20"
+              className="absolute -bottom-8 -left-2 sm:-left-10 bg-app-surface p-5 rounded-3xl shadow-premium border border-app-border-subtle flex items-center gap-4 z-20"
             >
               <div className="w-12 h-12 bg-success/20 rounded-2xl flex items-center justify-center text-success text-2xl shadow-inner">
                 ✓
               </div>
               <div>
-                <p className="text-sm font-black text-base-content leading-none">Fast Approval</p>
-                <p className="text-xs text-base-content/40 mt-1 font-bold">Within 24 Hours</p>
+                <p className="text-sm font-black text-app-text leading-none">Fast Approval</p>
+                <p className="text-xs text-app-text-muted mt-1 font-bold">Within 24 Hours</p>
               </div>
             </motion.div>
           </motion.div>
@@ -90,3 +89,4 @@ const HeroBAnner = () => {
 };
 
 export default HeroBAnner;
+

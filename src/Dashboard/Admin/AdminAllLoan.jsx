@@ -51,8 +51,8 @@ const AdminAllLoan = () => {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-6">
         <div>
-          <h2 className="text-3xl font-bold text-base-content">All Loans</h2>
-          <p className="text-base-content/50 mt-1">Manage all loan products available in the system.</p>
+          <h2 className="text-3xl font-bold text-app-text">All Loans</h2>
+          <p className="text-app-text-muted mt-1">Manage all loan products available in the system.</p>
         </div>
         
         <Link 
@@ -66,29 +66,29 @@ const AdminAllLoan = () => {
       <div className="card-modern overflow-hidden">
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
-            <thead className="bg-base-200/50">
+            <thead className="bg-app-surface-hover/50">
               <tr>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider">Loan Details</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Interest</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Category</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Home Display</th>
-                <th className="py-5 px-6 text-base-content/60 font-semibold uppercase text-[11px] tracking-wider text-center">Actions</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider">Loan Details</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Interest</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Category</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Home Display</th>
+                <th className="py-5 px-6 text-app-text-secondary font-semibold uppercase text-[11px] tracking-wider text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
               {allLoans.length > 0 ? (
                 allLoans.map((loan) => (
-                  <tr key={loan?._id} className="hover:bg-base-200/30 transition-colors">
+                  <tr key={loan?._id} className="hover:bg-app-surface-hover/30 transition-colors">
                     <td className="py-4 px-6">
                       <div className="flex items-center gap-4">
                         <img
-                          className="h-14 w-14 rounded-xl object-cover shadow-md border border-base-content/5"
+                          className="h-14 w-14 rounded-xl object-cover shadow-md border border-app-border-subtle"
                           src={loan?.photoUrl}
                           alt={loan?.title}
                         />
                         <div>
-                          <p className="font-bold text-base-content">{loan?.title}</p>
-                          <p className="text-xs text-base-content/40 truncate max-w-[200px]">{loan?.description}</p>
+                          <p className="font-bold text-app-text">{loan?.title}</p>
+                          <p className="text-xs text-app-text-muted truncate max-w-[200px]">{loan?.description}</p>
                         </div>
                       </div>
                     </td>
@@ -96,7 +96,7 @@ const AdminAllLoan = () => {
                       <span className="font-bold text-primary">{loan?.interestRate}%</span>
                     </td>
                     <td className="py-4 px-6 text-center">
-                      <span className="badge badge-outline border-base-content/10 text-base-content/70 px-3 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider">
+                      <span className="badge badge-outline border-app-border-subtle text-app-text-secondary px-3 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider">
                         {loan?.category}
                       </span>
                     </td>
@@ -137,3 +137,4 @@ const AdminAllLoan = () => {
 };
 
 export default AdminAllLoan;
+
