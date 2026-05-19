@@ -116,13 +116,13 @@ const About = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="w-full sm:w-auto py-4 px-10 bg-white text-primary font-bold rounded-xl shadow-xl hover:scale-105 transition-transform duration-300">
+              <Link to="/allLoan" className="w-full sm:w-auto py-4 px-10 bg-white text-primary font-bold rounded-xl shadow-xl hover:scale-105 transition-transform duration-300">
                 Apply for Loan
-              </button>
+              </Link>
 
-              <button className="w-full sm:w-auto py-4 px-10 bg-white/10 text-white font-bold rounded-xl border border-white/20 backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
+              <Link to="/contact" className="w-full sm:w-auto py-4 px-10 bg-white/10 text-white font-bold rounded-xl border border-white/20 backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
                 Contact Sales
-              </button>
+              </Link>
             </div>
           </div>
 

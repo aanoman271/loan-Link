@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>loanlink</title>
-    <script type="module" crossorigin src="/assets/index-CABP8K5Z.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Col0PgCa.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>loanlink</title>
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+  <script type="module" crossorigin src="/assets/index-2t3Ue3tL.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Zu1wBXuX.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
 </html>
