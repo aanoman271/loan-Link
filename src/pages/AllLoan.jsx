@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import useInstance from "../Hooks/useInstance";
 import LoanCard from "../components/LoanCard";
-import { motion } from "framer-motion";
 import { FiSearch, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import Lodding from "../components/Lodding";
+import { motion } from "framer-motion";
 
 const AllLoan = () => {
   const instance = useInstance();
@@ -12,25 +13,30 @@ const AllLoan = () => {
   const [perPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchLoans = async () => {
       try {
+        setLoading(true);
         const res = await instance.get(
-          `/allLoans?page=${currentPage - 1}&size=${perPage}`
+          `/allLoans?page=${currentPage - 1}&size=${perPage}`,
         );
         setLoans(res.data.loanCollection || []);
         setTotalLoan(res.data.totalloan || 0);
       } catch (error) {
         console.error("Error fetching loans:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchLoans();
   }, [instance, currentPage, perPage]);
 
-  const filteredLoans = loans.filter((loan) =>
-    loan.title?.toLowerCase().includes(search.toLowerCase()) ||
-    loan.category?.toLowerCase().includes(search.toLowerCase())
+  const filteredLoans = loans.filter(
+    (loan) =>
+      loan.title?.toLowerCase().includes(search.toLowerCase()) ||
+      loan.category?.toLowerCase().includes(search.toLowerCase()),
   );
 
   const totalPages = Math.ceil(totalLoan / perPage);
@@ -48,11 +54,13 @@ const AllLoan = () => {
             <h2 className="text-4xl font-extrabold text-app-text">
               Explore <span className="text-primary">All Loans</span>
             </h2>
-            <p className="text-app-text-secondary mt-2">Find the perfect financial solution for your needs.</p>
+            <p className="text-app-text-secondary mt-2">
+              Find the perfect financial solution for your needs.
+            </p>
           </motion.div>
 
           {/* Search Bar */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             className="relative w-full md:w-96"
@@ -68,21 +76,27 @@ const AllLoan = () => {
           </motion.div>
         </div>
 
-        {/* Content Section */}
-        {filteredLoans.length === 0 ? (
+        {/* Content & Loading Section (Syntax Error fixed here) */}
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <Lodding />
+          </div>
+        ) : filteredLoans.length === 0 ? (
           <div className="text-center py-20 bg-app-surface rounded-3xl border border-dashed border-app-border-subtle">
-            <p className="text-lg text-app-text-muted">No loans found matching your criteria.</p>
+            <p className="text-lg text-app-text-muted">
+              No loans found matching your criteria.
+            </p>
           </div>
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredLoans.map((loan, index) => (
+            {filteredLoans.map((loan) => (
               <LoanCard key={loan._id} loan={loan} />
             ))}
           </div>
         )}
 
         {/* Pagination */}
-        {totalPages > 1 && (
+        {!loading && totalPages > 1 && (
           <div className="flex justify-center items-center gap-2 mt-16">
             <button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
@@ -123,4 +137,3 @@ const AllLoan = () => {
 };
 
 export default AllLoan;
-

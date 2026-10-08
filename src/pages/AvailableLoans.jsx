@@ -13,7 +13,6 @@ const AvailableLoans = () => {
     };
     fetch();
   }, []);
-  console.log(availableLaon);
   return (
     <Section>
       <div className="text-center mb-16 space-y-4">
@@ -21,11 +20,12 @@ const AvailableLoans = () => {
           Available <span className="text-primary italic">Loans</span>
         </h2>
         <p className="text-app-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
-          Explore our curated selection of loan plans tailored to your specific needs.
+          Explore our curated selection of loan plans tailored to your specific
+          needs.
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 ">
         {availableLaon.map((loan) => (
           <LoanCard key={loan._id} loan={loan}></LoanCard>
         ))}
@@ -35,4 +35,3 @@ const AvailableLoans = () => {
 };
 
 export default AvailableLoans;
-

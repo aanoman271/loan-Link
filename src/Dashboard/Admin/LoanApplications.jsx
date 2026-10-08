@@ -3,7 +3,16 @@ import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useSecureInstance";
 import useSwal from "../../Hooks/useSwal";
 import Lodding from "../../components/Lodding";
-import { FaEye, FaCheck, FaTimes, FaUser, FaMoneyBillWave, FaSearch, FaCalendarAlt, FaTasks } from "react-icons/fa";
+import {
+  FaEye,
+  FaCheck,
+  FaTimes,
+  FaUser,
+  FaMoneyBillWave,
+  FaSearch,
+  FaCalendarAlt,
+  FaTasks,
+} from "react-icons/fa";
 
 const LoanApplications = () => {
   const axiosSecure = useAxiosSecure();
@@ -23,9 +32,12 @@ const LoanApplications = () => {
         setApplications(res.data);
       } catch (error) {
         console.error("Fetch error:", error);
-        // If /all-loan-applications doesn't exist, try a fallback if known, 
+        // If /all-loan-applications doesn't exist, try a fallback if known,
         // or show a descriptive error.
-        err(error.response?.data?.message || "Failed to load applications. Endpoint /loan-applications not found. Please verify the correct admin endpoint.");
+        err(
+          error.response?.data?.message ||
+            "Failed to load applications. Endpoint /loan-applications not found. Please verify the correct admin endpoint.",
+        );
       } finally {
         setLoading(false);
       }
@@ -40,8 +52,8 @@ const LoanApplications = () => {
         await axiosSecure.patch(`/loan-applications/${id}/approve`);
         setApplications((prev) =>
           prev.map((app) =>
-            app._id === id ? { ...app, status: "approved" } : app
-          )
+            app._id === id ? { ...app, status: "approved" } : app,
+          ),
         );
         success("Loan application approved successfully");
       }
@@ -57,8 +69,8 @@ const LoanApplications = () => {
         await axiosSecure.patch(`/loan-applications/${id}/reject`);
         setApplications((prev) =>
           prev.map((app) =>
-            app._id === id ? { ...app, status: "rejected" } : app
-          )
+            app._id === id ? { ...app, status: "rejected" } : app,
+          ),
         );
         success("Loan application rejected successfully");
       }
@@ -72,7 +84,7 @@ const LoanApplications = () => {
       app?.firstName?.toLowerCase()?.includes(search.toLowerCase()) ||
       app?.lastName?.toLowerCase()?.includes(search.toLowerCase()) ||
       app?.userEmail?.toLowerCase()?.includes(search.toLowerCase()) ||
-      app?.loanTitle?.toLowerCase()?.includes(search.toLowerCase())
+      app?.loanTitle?.toLowerCase()?.includes(search.toLowerCase()),
   );
 
   if (loading) return <Lodding />;
@@ -82,7 +94,9 @@ const LoanApplications = () => {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-6">
         <div>
-          <h2 className="text-3xl font-bold text-app-text">Loan Applications</h2>
+          <h2 className="text-3xl font-bold text-app-text">
+            Loan Applications
+          </h2>
           <p className="text-app-text-muted mt-1">
             Manage and review all incoming loan requests across the platform.
           </p>
@@ -128,11 +142,16 @@ const LoanApplications = () => {
             <tbody>
               {filteredApplications.length > 0 ? (
                 filteredApplications.map((app) => (
-                  <tr key={app?._id} className="hover:bg-app-surface-hover/30 transition-colors border-b border-app-border-subtle/50">
+                  <tr
+                    key={app?._id}
+                    className="hover:bg-app-surface-hover/30 transition-colors border-b border-app-border-subtle/50"
+                  >
                     <td className="py-4 px-6">
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold shrink-0">
-                          {app?.firstName?.charAt(0) || <FaUser className="w-4 h-4" />}
+                          {app?.firstName?.charAt(0) || (
+                            <FaUser className="w-4 h-4" />
+                          )}
                         </div>
                         <div className="min-w-0">
                           <p className="font-bold text-app-text truncate">
@@ -157,14 +176,15 @@ const LoanApplications = () => {
                     </td>
                     <td className="py-4 px-6 text-center">
                       <span
-                        className={`badge badge-sm rounded-lg font-bold uppercase tracking-wider h-7 px-3 border-none ${app?.status === "approved"
-                          ? "bg-success/10 text-success"
-                          : app?.status === "pending"
-                            ? "bg-orange-500/10 text-orange-600"
-                            : app?.status === "rejected"
-                              ? "bg-error/10 text-error"
-                              : "bg-warning/10 text-warning-content"
-                          }`}
+                        className={`badge badge-sm rounded-lg font-bold uppercase tracking-wider h-7 px-3 border-none ${
+                          app?.status === "approved"
+                            ? "bg-success/10 text-success"
+                            : app?.status === "pending"
+                              ? "bg-orange-500/10 text-orange-600"
+                              : app?.status === "rejected"
+                                ? "bg-error/10 text-error"
+                                : "bg-warning/10 text-warning-content"
+                        }`}
                       >
                         {app?.status || "Pending"}
                       </span>
@@ -178,7 +198,9 @@ const LoanApplications = () => {
                     <td className="py-4 px-6 text-right">
                       <div className="flex justify-end gap-2">
                         <button
-                          onClick={() => navigate(`/dashboard/loan-application/${app._id}`)}
+                          onClick={() =>
+                            navigate(`/dashboard/loan-application/${app._id}`)
+                          }
                           className="btn btn-ghost btn-sm text-info hover:bg-info/10 rounded-xl px-3"
                           title="View Details"
                         >
@@ -209,7 +231,10 @@ const LoanApplications = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="5" className="text-center py-20 text-app-text-muted">
+                  <td
+                    colSpan="5"
+                    className="text-center py-20 text-app-text-muted"
+                  >
                     <div className="flex flex-col items-center gap-3 opacity-30">
                       <FaTasks className="h-12 w-12" />
                       <p className="text-xl font-bold">No applications found</p>

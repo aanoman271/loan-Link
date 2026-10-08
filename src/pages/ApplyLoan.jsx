@@ -11,7 +11,6 @@ const ApplyLoan = () => {
   const navigate = useNavigate();
   const { success, err } = useSwal();
   const { interestRate, loanOfficer_email, loanId, title } = state;
-  console.log(interestRate, loanId, title, loanOfficer_email);
 
   const handleApply = async (e) => {
     e.preventDefault();
@@ -125,4 +124,3 @@ const ApplyLoan = () => {
 };
 
 export default ApplyLoan;
-
