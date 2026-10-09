@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { IoArrowForwardOutline } from "react-icons/io5";
-
+import Button from "../reuseabble/Button";
 const FALLBACK_IMG =
   "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop";
 
@@ -53,13 +53,20 @@ const LoanCard = ({ loan }) => {
           </div>
         </dl>
 
-        <Link
-          to={`/loanDeatail/${_id}`}
-          className="mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-        >
-          Explore loan
-          <span className="sr-only">: {title}</span>
-          <IoArrowForwardOutline aria-hidden="true" className="h-4 w-4" />
+        <Link className="flex items-center" to={`/loanDeatail/${_id}`}>
+          <Button className="group relative overflow-hidden flex items-center gap-2 bg-primary text-primary-content hover:bg-primary-focus cursor-pointer">
+            <span className="relative z-10">Explore loan</span>
+
+            <IoArrowForwardOutline
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            />
+
+            <span
+              aria-hidden="true"
+              className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-current transition-all duration-300 group-hover:left-4 group-hover:w-[calc(100%-2rem)]"
+            />
+          </Button>
         </Link>
       </div>
     </motion.article>

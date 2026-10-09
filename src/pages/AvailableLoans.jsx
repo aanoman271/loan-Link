@@ -14,8 +14,8 @@ const AvailableLoans = () => {
     fetch();
   }, []);
   return (
-    <Section>
-      <div className="text-center mb-16 space-y-4">
+    <Section className="bg-app-bg shadow-premium">
+      <div className="text-center  mb-16 space-y-4">
         <h2 className="text-3xl md:text-5xl font-black text-app-text tracking-tight">
           Available <span className="text-primary italic">Loans</span>
         </h2>

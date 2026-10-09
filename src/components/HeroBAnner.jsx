@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router";
 // import heroImg from "../assets/hero.png";
 import heroBg from "../assets/bg-hero-3.jpg";
+import Button from "../reuseabble/Button";
 
 const HeroBAnner = () => {
   return (
@@ -45,17 +46,15 @@ const HeroBAnner = () => {
               manage unexpected expenses with ease.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <Link
-                to="/allLoan"
-                className="w-3xl sm:w-auto px-10 py-2 bg-primary hover:bg-primary/94 text-white  rounded-sm shadow-premium transition-all transform hover:scale-102 active:scale-60 text-md"
-              >
-                Explore Plans
+              <Link to="/allLoan">
+                <Button className="cursor-pointer bg-primary hover:bg-primary/94 hover:text-app-text-muted text-app-text-inverse">
+                  Explore Plans
+                </Button>
               </Link>
-              <a
-                href="#how-it-works"
-                className="text-app-text w-3xl outline-app-border-subtle outline-1  sm:w-auto px-10 py-2 hover:text-app-success   rounded-sm shadow-premium transition-all transform hover:scale-102 active:scale-60 text-md"
-              >
-                <button className=" cursor-pointer">How It Works</button>
+              <a href="#how-it-works">
+                <Button className="cursor-pointer text-app-text  outline-app-border-subtle bg-app-surface outline-1   hover:text-app-text-muted   ">
+                  How It Works
+                </Button>
               </a>
               {/* <Link
                 to="/allLoan"
